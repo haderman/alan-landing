@@ -1,0 +1,52 @@
+---
+import { createAvatar as dicebearCreateAvatar } from '@dicebear/core';
+import * as identicon from '@dicebear/identicon';
+import { nanoid } from 'nanoid';
+
+export function createAvatar(seed?: string) {
+  const avatar = dicebearCreateAvatar(identicon, {
+    seed: seed ?? nanoid(),
+    scale: 70,
+    randomizeIds: false,
+  });
+
+  return avatar.toString();
+}
+
+const parts = [
+  createAvatar('A'),
+  createAvatar('L'),
+  createAvatar('A'),
+  createAvatar('N'),
+];
+
+---
+<div class="alan-logo-text">
+  {parts.map((part, index) => {
+    return (
+      <div class="container identicon" set:html={part} />
+    );
+  })}
+</div>
+
+<style is:global>
+  .alan-logo-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .container.identicon {
+    border: 1px solid hsl(210deg 27% 11% / 100%);
+  }
+
+  .identicon {
+    width: 64px;
+    color: hsl(210deg 27% 11% / 100%);
+  }
+
+  .identicon path {
+    fill: currentColor;
+  }
+</style>
