@@ -1,27 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import AlanLogoText from '../components/AlanLogoText.astro';
-import { createAvatar as dicebearCreateAvatar } from '@dicebear/core';
-import * as identicon from '@dicebear/identicon';
-import { nanoid } from 'nanoid';
-
-export function createAvatar(seed?: string) {
-  const avatar = dicebearCreateAvatar(identicon, {
-    seed: seed ?? nanoid(),
-    scale: 70,
-    randomizeIds: false,
-  });
-
-  return avatar.toString();
-}
-
-const avatarTest = createAvatar();
+import Button from '../components/Button.astro';
+import Overlay from '../components/Overlay.astro';
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <AlanLogoText />
-  </main>
+  <!-- <main>
+    <Button />
+  </main> -->
+  <Overlay />
 </Layout>
 
 <style is:global>
@@ -58,8 +45,10 @@ const avatarTest = createAvatar();
   main {
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 48px;
   }
 
 
