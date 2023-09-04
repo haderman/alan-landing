@@ -1,14 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
-import Overlay from '../components/Overlay.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Layout title="Welcome to Astro.">
-  <!-- <main>
+  <header>
+    <img src="/alan-with-background.png" alt="Alan Logo" />
     <Button />
-  </main> -->
-  <Overlay />
+  </header>
+  <main>
+    <Hero />
+  </main>
 </Layout>
 
 <style is:global>
@@ -36,22 +39,40 @@ import Overlay from '../components/Overlay.astro';
   body {
     margin: 0;
     padding: 0;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 100%;
     color: white;
     background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+  }
+
+  header img {
+    height: 48px;
   }
 
   main {
+    position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 48px;
+    overflow: hidden;
+    flex-grow: 1;
   }
-
-
 
   /*
    * Scrollbar style
