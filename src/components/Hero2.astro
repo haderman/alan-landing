@@ -1,0 +1,68 @@
+---
+import { createAvatar as dicebearCreateAvatar } from '@dicebear/core';
+import * as identicon from '@dicebear/identicon';
+
+import Button from "./Button.astro";
+
+function createAvatar(seed?: string) {
+  const avatar = dicebearCreateAvatar(identicon, {
+    seed: 'A',
+    scale: 70,
+    randomizeIds: false,
+  });
+
+  return avatar.toString();
+}
+
+const alanSVG = createAvatar();
+---
+
+<h1>Cooming Soon</h1>
+<div class="background">
+  <div class="circle" set:html={alanSVG} />
+  <div class="circle" />
+  <div class="circle" />
+  <div class="circle" />
+</div>
+<Button />
+
+<style>
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .circle {
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    background-color: hsl(210 30% 6%);
+    padding: 20px;
+    border-radius: 50%;
+  }
+  .circle:nth-child(2) {
+    z-index: 4;
+    transform: translate(-50%,-50%) scale(1.5);
+    background-color: hsl(210 30% 11%);
+    z-index: 2;
+  }
+  .circle:nth-child(3) {
+    z-index: 3;
+    transform: translate(-50%,-50%) scale(2.5);
+    background-color: hsl(210 30% 16%);
+  }
+  .circle:nth-child(4) {
+    z-index: 2;
+    transform: translate(-50%,-50%) scale(3);
+    background-color: hsl(210 30% 21%);
+  }
+</style>
