@@ -2,8 +2,6 @@
 import { createAvatar as dicebearCreateAvatar } from '@dicebear/core';
 import * as identicon from '@dicebear/identicon';
 
-import Button from "./Button.astro";
-
 function createAvatar(seed?: string) {
   const avatar = dicebearCreateAvatar(identicon, {
     seed: 'A',
@@ -17,18 +15,18 @@ function createAvatar(seed?: string) {
 const alanSVG = createAvatar();
 ---
 
-<h1>Cooming Soon</h1>
 <div class="background">
   <div class="circle" set:html={alanSVG} />
   <div class="circle" />
   <div class="circle" />
   <div class="circle" />
+  <div class="backdrop" />
 </div>
-<Button />
 
-<style>
+<style is:global>
   .background {
     position: absolute;
+    z-index: 0;
     top: 0;
     left: 0;
     width: 100%;
@@ -36,7 +34,17 @@ const alanSVG = createAvatar();
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
   }
+
+  .background svg {
+    fill: hsl(210 30% 6%);;
+  }
+
+  .background svg path {
+    fill: inherit;
+  }
+
   .circle {
     z-index: 5;
     position: absolute;
@@ -45,24 +53,30 @@ const alanSVG = createAvatar();
     transform: translate(-50%, -50%);
     width: 250px;
     height: 250px;
-    background-color: hsl(210 30% 6%);
-    padding: 20px;
+    background-color: hsl(210 30% 0%);
+    padding: 60px;
     border-radius: 50%;
+    /* border: 1px solid; */
+    box-shadow: inset 0px 0px 42px 0px hsl(210 45% 45% / 0.3),
+      0px 0px 59px 0px hsl(201 40% 30% / 0.3)
   }
   .circle:nth-child(2) {
     z-index: 4;
     transform: translate(-50%,-50%) scale(1.5);
-    background-color: hsl(210 30% 11%);
+    border-color: hsl(210 30% 11%);
     z-index: 2;
   }
   .circle:nth-child(3) {
     z-index: 3;
-    transform: translate(-50%,-50%) scale(2.5);
-    background-color: hsl(210 30% 16%);
+    transform: translate(-50%,-50%) scale(2);
+    border-color: hsl(210 30% 16%);
+    box-shadow: 0px 0px 20px 0px hsl(206.57deg 76.74% 9.12%)
   }
   .circle:nth-child(4) {
     z-index: 2;
     transform: translate(-50%,-50%) scale(3);
-    background-color: hsl(210 30% 21%);
+    border-color: hsl(210 30% 21%);
+    background-color: hsl(210 30% 0%);
+    box-shadow: inset 0px 0px 23px 1px hsl(210 40% 30% / 0.3);
   }
 </style>

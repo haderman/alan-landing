@@ -1,15 +1,17 @@
 ---
 
 ---
-<a>
-  Install
+<a target="_blank" href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai">
+  Try out Alan Chat
 </a>
 
 
 <style>
   a {
+    font-family: system-ui, sans-serif;
+    text-shadow: 1px 1px 0px black;
+    text-decoration: none;
     position: relative;
-    overflow: hidden;
     z-index: 2;
     cursor: pointer;
     display: flex;
@@ -19,8 +21,10 @@
     color: hsl(210 40% 80%);
     border-radius: 4px;
     background: hsl(210 0% 0% / 0.5);
-    border: 0.5px solid hsl(210 40% 40%);
-    transition: border-color 0.2s ease-in-out;
+    border: 0.1px solid hsl(211 81% 73%);
+    transition: border-color background-color 0.2s ease-in-out;
+    box-shadow: inset 0px 0px 2px 1px hsl(218deg 67% 58% / 64%),
+      0px 0px 5px 0.5px hsl(218deg 67% 58% / 64%);
   }
 
   a::after {
@@ -31,10 +35,10 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    background-color: hsl(256, 50%, 50%);
+    background-color: hsl(256, 66%, 48%);
+    filter: blur(15px);
     z-index: -1;
-    filter: blur(30px);
-    animation: shine 4s linear infinite;
+    /* animation: shine 4s linear infinite; */
   }
 
   a::before {
@@ -45,31 +49,33 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    background-color: hsl(210 50% 56% / 1);
+    background-color: hsl(210 95% 59% / 1);
     z-index: -1;
-    filter: blur(30px);
-    animation: shine 4s linear infinite;
+    filter: blur(13px);
+    /* animation: shine 4s linear infinite; */
   }
 
-  button:hover {
-    border: 0.5px solid hsl(210 40% 40%);
+  a:hover {
+    border-color: hsl(211 81% 93%);
+    background-color: black;
   }
 
-  button:hover::after {
-    background-color: hsl(256, 60%, 50%);
+  /* a:hover::after {
+    background-color: hsl(256, 66%, 48%);
+    filter: blur(45px);
   }
 
-  button:hover::before {
+  a:hover::before {
     background-color: hsl(210 60% 46% / 1);
-  }
+  } */
 
-  button:focus::after {
+  /* a:focus::after {
     animation: shine 2s linear infinite;
   }
 
-  button:focus::before {
+  a:focus::before {
     animation: shine 2s linear infinite;
-  }
+  } */
 
   @keyframes shine {
   0% {
