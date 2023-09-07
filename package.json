@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "source ~/.nvm/nvm.sh && nvm use && astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -14,7 +14,7 @@
     "@dicebear/identicon": "^6.0.4",
     "@fontsource-variable/montserrat": "^5.0.9",
     "@resvg/resvg-js": "^2.4.1",
-    "astro": "^2.10.12",
+    "astro": "^3.0.10",
     "exiftool-vendored": "^16.5.1",
     "nanoid": "^4.0.2",
     "sharp": "^0.32.5"
