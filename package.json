@@ -12,6 +12,7 @@
   "dependencies": {
     "@dicebear/core": "^6.0.4",
     "@dicebear/identicon": "^6.0.4",
+    "@fontsource-variable/montserrat": "^5.0.9",
     "@resvg/resvg-js": "^2.4.1",
     "astro": "^2.10.12",
     "exiftool-vendored": "^16.5.1",

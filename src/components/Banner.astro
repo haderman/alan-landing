@@ -1,0 +1,76 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="banner top">
+  <h3>Website under construction</h3>
+</div>
+<div class="banner bottom">
+  <Button />
+</div>
+
+<style>
+  .banner {
+    width: 100%;
+    padding: 20px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    background-color: hsl(210deg 30% 12% / 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .banner.bottom {
+    margin-top: auto;
+    padding: 30px;
+  }
+
+  .banner.top {
+    --yellow: hsl(60 80% 30% / 0.4);
+    --black: hsl(210 30% 12% / 0.3);
+
+    padding: 10px;
+    background: linear-gradient(
+      110deg,
+      var(--black) 0%,
+      var(--black) 6.25%,
+      var(--yellow) 6.25%,
+      var(--yellow) 12.5%,
+      var(--black) 12.5%,
+      var(--black) 18.75%,
+      var(--yellow) 18.75%,
+      var(--yellow) 25.0%,
+      var(--black) 25.0%,
+      var(--black) 31.25%,
+      var(--yellow) 31.25%,
+      var(--yellow) 37.5%,
+      var(--black) 37.5%,
+      var(--black) 43.75%,
+      var(--yellow) 43.75%,
+      var(--yellow) 50%,
+      var(--black) 50%,
+      var(--black) 56.25%,
+      var(--yellow) 56.25%,
+      var(--yellow) 62.5%,
+      var(--black) 62.5%,
+      var(--black) 68.75%,
+      var(--yellow) 68.75%,
+      var(--yellow) 75%,
+      var(--black) 75%,
+      var(--black) 81.25%,
+      var(--yellow) 81.25%,
+      var(--yellow) 87.5%,
+      var(--black) 87.5%,
+      var(--black) 93.75%,
+      var(--yellow) 93.75%,
+      var(--yellow) 100%
+    );
+  }
+
+  .banner h3 {
+    text-align: center;
+    color: hsl(210 52% 88%);
+    margin: 0;
+    text-shadow: 1px 1px black;
+  }
+</style>
