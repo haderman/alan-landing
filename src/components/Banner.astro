@@ -4,6 +4,12 @@ import Button from "./Button.astro";
 
 <div class="banner">
   <Button />
+  <p>
+    AI code chat right in the IDE, helping developers by generating code, 
+    writing unit tests and documentation, explaining legacy code, and much more. 
+    Alan supports all major languages including JavaScript, Python, Java, 
+    Typescript c/c++ and more.
+  </p>
 </div>
 
 <style>
@@ -13,8 +19,20 @@ import Button from "./Button.astro";
     margin-top: auto;
     z-index: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    background-color: hsl(210deg 30% 12% / 0.3);
+    align-items: center;
+    gap: 16px;
+    background-color: hsl(210deg 30% 7% / 0.6);
     backdrop-filter: blur(10px);
+  }
+
+  .banner p {
+    font-size: 0.9rem;
+    max-width: 65ch;
+    font-weight: 100;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    color: hsl(210 15% 90%);
   }
 </style>

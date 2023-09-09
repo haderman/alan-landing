@@ -1,10 +1,11 @@
 ---
+import brandVscodeSVG from "../assets/brand-vscode.svg?raw";
 
 ---
 <a target="_blank" href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai">
-  Try out Alan Chat
+  <Fragment set:html={brandVscodeSVG} />
+  <span>Install</span>
 </a>
-
 
 <style>
   a {
@@ -40,7 +41,6 @@
     z-index: -1;
     /* animation: shine 4s linear infinite; */
   }
-
   a::before {
     content: "";
     position: absolute;
@@ -54,12 +54,10 @@
     filter: blur(13px);
     /* animation: shine 4s linear infinite; */
   }
-
   a:hover {
     border-color: hsl(211 81% 93%);
     background-color: black;
   }
-
   /* a:hover::after {
     background-color: hsl(256, 66%, 48%);
     filter: blur(45px);
