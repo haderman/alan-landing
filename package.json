@@ -19,5 +19,9 @@
     "exiftool-vendored": "^16.5.1",
     "nanoid": "^4.0.2",
     "sharp": "^0.32.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "cssnano": "^6.0.1"
   }
 }
