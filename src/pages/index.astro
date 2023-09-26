@@ -1,25 +1,68 @@
 ---
+import { Image } from 'astro:assets';
+import logoSrc from '../assets/alan.svg';
 import Layout from '../layouts/Layout.astro';
 import Banner from '../components/Banner.astro';
 import Background from '../components/Background.astro';
 import LinkGithub from '../components/LinkGithub.astro';
+import Button from "../components/Button.astro";
 ---
 
 <Layout title="Welcome to Alan Chat.">
+  <!-- <Background /> -->
+  <!-- <header></header> -->
+  <header>
+    <div>
+      <Image src={logoSrc} alt="Alan logo" />
+    </div>
+    <nav>
+      <a href="#">About</a>
+      <a href="#">FAQs</a>
+    </nav>
+  </header>
   <main>
-    <Background />
-    <Banner />
-    <LinkGithub />
+    <section class="hero">
+      <div>
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          onloadstart="this.playbackRate = 2;"
+        >
+          <source src="demo-astro.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <article>
+        <h1 class="headline text-gradient">
+          AI code chat right in the IDE
+        </h1>
+        <Button />
+      </article>
+    </section>
+    <!-- <div>
+      <Background />
+    </div>
+    <div>
+      <h1 class="headline">
+        AI code chat right in the IDE
+      </h1>
+      <Button />
+    </div> -->
+    <!-- <Banner /> -->
+    <!-- <Banner />
+    <LinkGithub /> -->
   </main>
 </Layout>
 
-<style is:global>
+<style is:global lang="scss">
   :root {
     --primary-color: hsl(210deg 30% 2%);
+    // --color: 210deg 27% 7%;
 
-    /* --surface-1: hsl(210deg 30% 2%);
+    --surface-1: hsl(210deg 27% 7%);
     --surface-2: hsl(210deg 27% 7% / 50%);
-    --surface-3: hsl(210deg 6% 10%); */
+    --surface-3: hsl(210deg 6% 10%);
   }
 
   *,
@@ -36,41 +79,107 @@ import LinkGithub from '../components/LinkGithub.astro';
   }
 
   body {
+    --padding-left-right: clamp(10px, 3vw, 48px );
+    --primary-text: hsl(210, 10%, 70%);
+    --header-height: 80px;
+    --logo-size: 48px;
+
     margin: 0;
     padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
     height: 100%;
-    color: white;
-    background-color: var(--primary-color);
-    display: flex;
-    flex-direction: column;
-  }
-
-  header {
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: space-between;
-    padding: 0 24px;
-  }
-
-  header img {
-    height: 48px;
+    color: var(--primary-text);
+    background-color: var(--surface-1);
   }
 
   main {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 48px;
+    display: block;
     overflow: hidden;
-    flex-grow: 1;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    height: var(--header-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--surface-2);
+    display: flex;
+    justify-content: space-between;
+    padding: 12px var(--padding-left-right);
+    & > img {
+      height: var(--logo-size);
+      width: var(--logo-size);
+    }
+
+    & > nav {
+      display: flex;
+      gap: 24px;
+      & > a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  header img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5rem var(--padding-left-right);
+    height: 100%;
+    position: relative;
+
+    & > div:first-child {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 960px;
+    }
+    & > article {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(1rem, 5vw, 4rem);
+      flex-shrink: 1;
+      flex-grow: 1;
+      flex-basis: 300px;
+      text-align: center;
+      margin: auto;
+    }
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .headline {
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    color: whitesmoke;
+  }
+
+  .text-gradient {
+    background: linear-gradient(120deg, #9c27b0 20%, #00BCD4);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
   }
 
   /*
