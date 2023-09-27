@@ -6,11 +6,11 @@ import Banner from '../components/Banner.astro';
 import Background from '../components/Background.astro';
 import LinkGithub from '../components/LinkGithub.astro';
 import Button from "../components/Button.astro";
+import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
 ---
 
 <Layout title="Welcome to Alan Chat.">
   <!-- <Background /> -->
-  <!-- <header></header> -->
   <header>
     <div>
       <Image src={logoSrc} alt="Alan logo" />
@@ -37,9 +37,34 @@ import Button from "../components/Button.astro";
         <h1 class="headline text-gradient">
           AI code chat right in the IDE
         </h1>
+        <ul>
+          <li>
+            <IconCircleCheckSrc />
+            <span>
+              Harness the power of OpenAI's GPT models right within your VS Code editor
+            </span>
+          </li>
+          <li>
+            <IconCircleCheckSrc />
+            <span>Create multiple custom chat agents for different coding scenarios</span>
+          </li>
+          <li>
+            <IconCircleCheckSrc />
+            <span>Interact with an intelligent AI assistant while maintaining utmost data privacy and security</span>
+          </li>
+        </ul>
         <Button />
       </article>
     </section>
+    <!-- <section class="features">
+      <article>
+        <h2>AI code chat right in the IDE</h2>
+        <p>
+          Alan is a voice platform that lets you create and deploy
+          voice experiences in minutes, without coding.
+        </p>
+      </article>
+    </section> -->
     <!-- <div>
       <Background />
     </div>
@@ -53,6 +78,12 @@ import Button from "../components/Button.astro";
     <!-- <Banner />
     <LinkGithub /> -->
   </main>
+  <!-- <footer>
+    <p>
+      Made with <span class="text-gradient">♥</span> by{' '}
+      <a href="https://twitter.com/astrodotbuild">@astrodotbuild</a>
+    </p>
+  </footer> -->
 </Layout>
 
 <style is:global lang="scss">
@@ -98,6 +129,27 @@ import Button from "../components/Button.astro";
     overflow: hidden;
   }
 
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: var(--surface-2);
+    backdrop-filter: blur(10px);
+    color: var(--primary-text);
+    font-size: 0.8rem;
+    & > p {
+      margin: 0;
+    }
+    & > p > a {
+      color: inherit;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   header {
     position: sticky;
     top: 0;
@@ -136,12 +188,16 @@ import Button from "../components/Button.astro";
     height: 48px;
   }
 
+  section {
+    padding: 5rem var(--padding-left-right);
+  }
+
   .hero {
     display: flex;
+    flex-direction: row-reverse;
     gap: 3rem;
     align-items: center;
     flex-wrap: wrap;
-    padding: 5rem var(--padding-left-right);
     height: 100%;
     position: relative;
 
@@ -155,6 +211,44 @@ import Button from "../components/Button.astro";
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 2rem;
+      flex-shrink: 1;
+      flex-grow: 1;
+      flex-basis: 300px;
+      margin: auto;
+
+      & > ul {
+        --pad-left: 2rem;
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: var(--pad-left);
+        & > li {
+          position: relative;
+          margin-bottom: .5em;
+          font-weight: 500;
+          line-height: 1.5;
+          font-size: 1em;
+          & > svg {
+            position: absolute;
+            left: calc(var(--pad-left) * -1);
+            top: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  .features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+
+    & > article {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: clamp(1rem, 5vw, 4rem);
       flex-shrink: 1;
       flex-grow: 1;
@@ -163,6 +257,7 @@ import Button from "../components/Button.astro";
       margin: auto;
     }
   }
+
   video {
     width: 100%;
     height: 100%;
