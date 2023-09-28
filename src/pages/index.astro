@@ -56,15 +56,53 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
         <Button />
       </article>
     </section>
-    <!-- <section class="features">
+    <section class="features">
+      <!-- <Background /> -->
       <article>
-        <h2>AI code chat right in the IDE</h2>
-        <p>
-          Alan is a voice platform that lets you create and deploy
-          voice experiences in minutes, without coding.
-        </p>
+        <div>
+          <h2>Custom Agents for Your Needs</h2>
+          <p>
+            Create custom chat agents for different topics or
+            individuals. Get assistance and interaction that's
+            perfectly tailored to your projects.
+          </p>
+        </div>
       </article>
-    </section> -->
+      <article>
+        <div>
+          <h2>Local Data Storage</h2>
+          <p>
+            Your conversation data is safely stored locally on your machine
+            for maximum data privacy and security.
+          </p>
+        </div>
+      </article>
+      <article>
+        <div>
+          <h2>OpenAI Integration</h2>
+          <p>
+            Leverage the global accessibility and powerful assistance of
+            OpenAI's GPT models in your coding journey.
+          </p>
+        </div>
+      </article>
+      <article>
+        <div>
+          <h2>Secure API Key Storage</h2>
+          <p>
+            Your OpenAI API key is securely stored using VS Code's secure
+            storage mechanism, keeping your sensitive information safe.
+          </p>
+        </div>
+      </article>
+      <!-- <article>
+        <h2>Completely Free</h2>
+        <p>
+          Enhance your coding experience without shelling out a
+          single dime. Harness the power of AI at zero cost with Alan!
+        </p> -->
+      </article>
+    </section>
     <!-- <div>
       <Background />
     </div>
@@ -167,7 +205,6 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
       height: var(--logo-size);
       width: var(--logo-size);
     }
-
     & > nav {
       display: flex;
       gap: 24px;
@@ -189,6 +226,7 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
   }
 
   section {
+    position: relative;
     padding: 5rem var(--padding-left-right);
   }
 
@@ -216,7 +254,6 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
       flex-grow: 1;
       flex-basis: 300px;
       margin: auto;
-
       & > ul {
         --pad-left: 2rem;
         list-style-type: none;
@@ -239,22 +276,78 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
   }
 
   .features {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 50ch));
+    grid-template-rows: 1fr 1fr;
     justify-content: center;
-    align-items: center;
-    background-color: black;
+    align-items: stretch;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 200px;
+    gap: 4rem;
+    height: calc(100vh - var(--header-height));
 
     & > article {
+      position: relative;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: clamp(1rem, 5vw, 4rem);
       flex-shrink: 1;
       flex-grow: 1;
       flex-basis: 300px;
-      text-align: center;
-      margin: auto;
+      border-radius: 8px;
+      background-image: linear-gradient(135deg,rgba(255,254,241,0.02),rgba(255,254,241,-0.01));
+      & > div {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background-color: linear-gradient(135deg,rgba(255,254,241,.02),rgba(255,254,241,0));
+        border-radius: 20px;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        transform: translate(0);
+        justify-content: center;
+      }
+      & h2 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-align: left;
+        color: hsl(0 0% 89% / 1);
+      }
+      & p {
+        color: hsl(0 0% 79% / 1);
+        font-size: 1rem;
+        font-weight: 100;
+        text-align: left;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        opacity: 0;
+        will-change: background, opacity;
+        transition-duration: 400ms;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-property: opacity;
+        background-image: radial-gradient( 600px at var(--cursor-x) var(--cursor-y), rgba(255, 254, 241, 0.15), transparent 40% );
+        background-size: auto;
+        background-origin: padding-box;
+        z-index: 1;
+      }
     }
   }
 
