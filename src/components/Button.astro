@@ -1,16 +1,18 @@
 ---
 import brandVscodeSVG from "../assets/brand-vscode.svg?raw";
-
 ---
-<a target="_blank" href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai">
+
+<a
+  target="_blank"
+  href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai"
+>
   <Fragment set:html={brandVscodeSVG} />
-  <span>Install for VSCode</span>
+  <span>Install for Free</span>
 </a>
 
 <style>
   a {
     font-family: system-ui, sans-serif;
-    text-shadow: 1px 1px 0px black;
     text-decoration: none;
     position: relative;
     z-index: 2;
@@ -19,44 +21,15 @@ import brandVscodeSVG from "../assets/brand-vscode.svg?raw";
     align-items: center;
     gap: 10px;
     padding: 8px 16px;
-    color: hsl(210 40% 80%);
     border-radius: 4px;
-    background: hsl(210 0% 0% / 1);
-    border: 0.1px solid hsl(211 81% 73%);
-    transition: border-color background-color 0.2s ease-in-out;
-    box-shadow: inset 0px 0px 2px 1px hsl(218deg 67% 58% / 64%),
-      0px 0px 5px 0.5px hsl(218deg 67% 58% / 64%);
+    background: hsl(261.6deg 51.87% 47.25%);
+    color: hsl(261.6deg 51.87% 95.25%);
+    transition: background-color 250ms ease-in-out;
   }
 
-  a::after {
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    background-color: hsl(256, 66%, 48%);
-    filter: blur(15px);
-    z-index: -1;
-    /* animation: shine 4s linear infinite; */
-  }
-  a::before {
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    background-color: hsl(210 95% 59% / 1);
-    z-index: -1;
-    filter: blur(13px);
-    /* animation: shine 4s linear infinite; */
-  }
   a:hover {
     border-color: hsl(211 81% 93%);
-    background-color: black;
+    background-color: hsl(261.6deg 51.87% 27.25%);
   }
   /* a:hover::after {
     background-color: hsl(256, 66%, 48%);
@@ -76,18 +49,17 @@ import brandVscodeSVG from "../assets/brand-vscode.svg?raw";
   } */
 
   @keyframes shine {
-  0% {
-    transform: translateX(-100%);
-    border: 0.5px solid hsl(210 40% 20%);
+    0% {
+      transform: translateX(-100%);
+      border: 0.5px solid hsl(210 40% 20%);
+    }
+    50% {
+      transform: translateX(100%);
+      border: 1px solid hsl(210 40% 40%);
+    }
+    100% {
+      transform: translateX(-100%);
+      border: 0.5px solid hsl(210 40% 20%);
+    }
   }
-  50% {
-    transform: translateX(100%);
-    border: 1px solid hsl(210 40% 40%);
-  }
-  100% {
-    transform: translateX(-100%);
-    border: 0.5px solid hsl(210 40% 20%);
-  }
-}
-
 </style>

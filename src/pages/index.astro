@@ -1,70 +1,71 @@
 ---
-import { Image } from 'astro:assets';
-import logoSrc from '../assets/alan.svg';
-import Layout from '../layouts/Layout.astro';
-import Banner from '../components/Banner.astro';
-import Background from '../components/Background.astro';
-import LinkGithub from '../components/LinkGithub.astro';
+import { Image } from "astro:assets";
+import logoSrc from "../assets/alan.svg";
+import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
-import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
+import IconCircleCheckSrc from "../components/IconCircleCheck.astro";
 ---
 
 <Layout title="Welcome to Alan Chat.">
-  <!-- <Background /> -->
   <header>
-    <div>
+    <div class="logo">
       <Image src={logoSrc} alt="Alan logo" />
+      <span>Alan AI</span>
     </div>
     <nav>
-      <a href="#">About</a>
-      <a href="#">FAQs</a>
+      <!-- <a href="#">FAQs</a> -->
     </nav>
   </header>
   <main>
     <section class="hero">
-      <div>
+      <div class="wrapper-hero-video">
         <video
           autoplay
           muted
           loop
           playsinline
-          onloadstart="this.playbackRate = 2;"
+          onloadstart="
+          this.playbackRate = 2;
+          "
         >
           <source src="demo-astro.mp4" type="video/mp4" />
         </video>
       </div>
       <article>
-        <h1 class="headline text-gradient">
-          AI code chat right in the IDE
-        </h1>
+        <h1 class="headline text-gradient">AI chat right in the IDE</h1>
         <ul>
           <li>
             <IconCircleCheckSrc />
             <span>
-              Harness the power of OpenAI's GPT models right within your VS Code editor
+              Harness the power of OpenAI's GPT models right within your VS Code
+              editor
             </span>
           </li>
           <li>
             <IconCircleCheckSrc />
-            <span>Create multiple custom chat agents for different coding scenarios</span>
+            <span>
+              Create multiple custom chat agents for different coding scenarios
+            </span>
           </li>
           <li>
             <IconCircleCheckSrc />
-            <span>Interact with an intelligent AI assistant while maintaining utmost data privacy and security</span>
+            <span>
+              Interact with an intelligent AI assistant while maintaining utmost
+              data privacy and security
+            </span>
           </li>
         </ul>
         <Button />
       </article>
     </section>
     <section class="features">
-      <!-- <Background /> -->
       <article>
         <div>
           <h2>Custom Agents for Your Needs</h2>
           <p>
-            Create custom chat agents for different topics or
-            individuals. Get assistance and interaction that's
-            perfectly tailored to your projects.
+            Create custom chat agents for different topics or individuals. Get
+            assistance and interaction that's perfectly tailored to your
+            projects.
           </p>
         </div>
       </article>
@@ -72,8 +73,8 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
         <div>
           <h2>Local Data Storage</h2>
           <p>
-            Your conversation data is safely stored locally on your machine
-            for maximum data privacy and security.
+            Your conversation data is safely stored locally on your machine for
+            maximum data privacy and security.
           </p>
         </div>
       </article>
@@ -95,33 +96,8 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
           </p>
         </div>
       </article>
-      <!-- <article>
-        <h2>Completely Free</h2>
-        <p>
-          Enhance your coding experience without shelling out a
-          single dime. Harness the power of AI at zero cost with Alan!
-        </p> -->
-      </article>
     </section>
-    <!-- <div>
-      <Background />
-    </div>
-    <div>
-      <h1 class="headline">
-        AI code chat right in the IDE
-      </h1>
-      <Button />
-    </div> -->
-    <!-- <Banner /> -->
-    <!-- <Banner />
-    <LinkGithub /> -->
   </main>
-  <!-- <footer>
-    <p>
-      Made with <span class="text-gradient">♥</span> by{' '}
-      <a href="https://twitter.com/astrodotbuild">@astrodotbuild</a>
-    </p>
-  </footer> -->
 </Layout>
 
 <style is:global lang="scss">
@@ -129,7 +105,7 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
     --primary-color: hsl(210deg 30% 2%);
     // --color: 210deg 27% 7%;
 
-    --surface-1: hsl(210deg 27% 7%);
+    --surface-1: hsl(210deg 27% 0%);
     --surface-2: hsl(210deg 27% 7% / 50%);
     --surface-3: hsl(210deg 6% 10%);
   }
@@ -148,10 +124,10 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
   }
 
   body {
-    --padding-left-right: clamp(10px, 3vw, 48px );
+    --padding-left-right: clamp(10px, 3vw, 48px);
     --primary-text: hsl(210, 10%, 70%);
     --header-height: 80px;
-    --logo-size: 48px;
+    --logo-size: 40px;
 
     margin: 0;
     padding: 0;
@@ -167,27 +143,6 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
     overflow: hidden;
   }
 
-  footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    background-color: var(--surface-2);
-    backdrop-filter: blur(10px);
-    color: var(--primary-text);
-    font-size: 0.8rem;
-    & > p {
-      margin: 0;
-    }
-    & > p > a {
-      color: inherit;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
   header {
     position: sticky;
     top: 0;
@@ -197,14 +152,9 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--surface-2);
-    display: flex;
+    background-color: hsl(0deg 0% 0% / 0.5);
     justify-content: space-between;
     padding: 12px var(--padding-left-right);
-    & > img {
-      height: var(--logo-size);
-      width: var(--logo-size);
-    }
     & > nav {
       display: flex;
       gap: 24px;
@@ -220,14 +170,23 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
     }
   }
 
-  header img {
-    width: 48px;
-    height: 48px;
-  }
-
   section {
     position: relative;
     padding: 5rem var(--padding-left-right);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    & img {
+      height: var(--logo-size);
+      width: var(--logo-size);
+    }
+    & span {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
   }
 
   .hero {
@@ -239,12 +198,12 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
     height: 100%;
     position: relative;
 
-    & > div:first-child {
+    & .wrapper-hero-video {
       flex-grow: 1;
       flex-shrink: 1;
       flex-basis: 960px;
     }
-    & > article {
+    & article {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -261,7 +220,7 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
         margin-left: var(--pad-left);
         & > li {
           position: relative;
-          margin-bottom: .5em;
+          margin-bottom: 0.5em;
           font-weight: 500;
           line-height: 1.5;
           font-size: 1em;
@@ -299,14 +258,22 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
       flex-grow: 1;
       flex-basis: 300px;
       border-radius: 8px;
-      background-image: linear-gradient(135deg,rgba(255,254,241,0.02),rgba(255,254,241,-0.01));
+      background-image: linear-gradient(
+        135deg,
+        rgba(255, 254, 241, 0.02),
+        rgba(255, 254, 241, -0.01)
+      );
       & > div {
         z-index: 1;
         width: 100%;
         height: 100%;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
-        background-color: linear-gradient(135deg,rgba(255,254,241,.02),rgba(255,254,241,0));
+        background-color: linear-gradient(
+          135deg,
+          rgba(255, 254, 241, 0.02),
+          rgba(255, 254, 241, 0)
+        );
         border-radius: 20px;
         flex-direction: column;
         padding: 2rem;
@@ -342,7 +309,11 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
         transition-timing-function: ease;
         transition-delay: 0s;
         transition-property: opacity;
-        background-image: radial-gradient( 600px at var(--cursor-x) var(--cursor-y), rgba(255, 254, 241, 0.15), transparent 40% );
+        background-image: radial-gradient(
+          600px at var(--cursor-x) var(--cursor-y),
+          rgba(255, 254, 241, 0.15),
+          transparent 40%
+        );
         background-size: auto;
         background-origin: padding-box;
         z-index: 1;
@@ -363,7 +334,7 @@ import IconCircleCheckSrc from '../components/IconCircleCheck.astro';
   }
 
   .text-gradient {
-    background: linear-gradient(120deg, #9c27b0 20%, #00BCD4);
+    background: linear-gradient(264deg, #607d8b 20%, #00bcd4);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-box-decoration-break: clone;
