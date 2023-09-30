@@ -26,7 +26,8 @@ const { title } = Astro.props;
         src={"https://www.googletagmanager.com/ns.html?id=" + GTM_ID}
         height="0"
         width="0"
-        style="display:none;visibility:hidden">
+        style="display:none;visibility:hidden"
+      >
       </iframe>
     </noscript>
     <slot />
@@ -36,17 +37,16 @@ const { title } = Astro.props;
 <script
   type="text/partytown"
   async
-  src={"https://www.googletagmanager.com/gtag/js?id=" + GTM_ID}
-></script>
+  src={"https://www.googletagmanager.com/gtag/js?id=" + GTM_ID}></script>
 
 <script type="text/partytown">
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag("js", new Date());
 
-  gtag("config", GTM_ID);
+gtag("config", GTM_ID);
 </script>
 
 <style is:global>
@@ -61,13 +61,15 @@ const { title } = Astro.props;
       white 60%
     );
   }
-  *, *::after, *::before {
+  *,
+  *::after,
+  *::before {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
   html {
-    font-family: "Montserrat Variable", sans-serif;
+    font-family: "Montserrat Variable", system-ui, sans-serif;
     background: #13151a;
     background-size: 224px;
   }
