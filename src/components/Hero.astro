@@ -1,0 +1,93 @@
+---
+import IconCircleCheckSrc from "../components/IconCircleCheck.astro";
+import CTA from "./CTA.astro";
+---
+
+<section class="hero">
+  <div class="wrapper-hero-video">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      onloadstart="
+      this.playbackRate = 2;
+      "
+    >
+      <source src="demo-astro.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <article>
+    <h1 class="headline text-gradient">Multiple AI Chats Right in Your IDE!</h1>
+    <ul>
+      <li>
+        <IconCircleCheckSrc />
+        <span>It's Free.</span>
+      </li>
+      <li>
+        <IconCircleCheckSrc />
+        <span>All you need is your OpenAI API key to get started.</span>
+      </li>
+      <li>
+        <IconCircleCheckSrc />
+        <span>
+          Create several AI chat agents, each tailored to a specific coding task
+          or pattern.
+        </span>
+      </li>
+    </ul>
+    <CTA />
+  </article>
+</section>
+
+<style is:global lang="scss">
+  .hero {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 3rem;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    position: relative;
+
+    & .wrapper-hero-video {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 960px;
+      aspect-ratio: 1728 / 1075;
+    }
+    & article {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-shrink: 1;
+      flex-grow: 1;
+      flex-basis: 300px;
+      margin: auto;
+      & > ul {
+        --pad-left: 2rem;
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: var(--pad-left);
+        & > li {
+          position: relative;
+          margin-bottom: 0.5em;
+          font-weight: 500;
+          line-height: 1.5;
+          font-size: 1em;
+          & > svg {
+            position: absolute;
+            left: calc(var(--pad-left) * -1);
+            top: 0px;
+          }
+        }
+      }
+    }
+  }
+  .headline {
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    color: whitesmoke;
+  }
+</style>
