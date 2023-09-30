@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import logoSrc from "../assets/alan.svg";
+---
+
+<header>
+  <div class="backdrop"></div>
+  <div class="logo">
+    <Image src={logoSrc} alt="Alan logo" />
+    <span>Alan AI</span>
+  </div>
+  <nav>
+    <!-- <a href="#">FAQs</a> -->
+  </nav>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    height: var(--header-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px var(--padding-left-right);
+    .logo {
+      z-index: 2;
+    }
+    & > nav {
+      display: flex;
+      gap: 24px;
+      & > a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  /**
+   * Backdrop inspired by https://x.com/artur_bien/status/1707131909212377460?s=20
+   */
+  .backdrop {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    inset: 0;
+
+    --extended-by: 100px;
+    bottom: calc(0 * var(--extended-by));
+
+    --cutoff: calc(100% - var(--extended-by));
+    -webkit-mask-image: linear-gradient(
+      to-bottom,
+      black 0,
+      black var(--cutoff),
+      transparent var(--cutoff)
+    );
+
+    --blur: 40px;
+    backdrop-filter: blur(var(--blur));
+  }
+
+  .logo {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    & img {
+      height: var(--logo-size);
+      width: var(--logo-size);
+    }
+    & span {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+  }
+</style>
