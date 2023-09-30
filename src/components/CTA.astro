@@ -7,10 +7,10 @@ import brandVscodeSVG from "../assets/brand-vscode.svg?raw";
   href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai"
 >
   <Fragment set:html={brandVscodeSVG} />
-  <span>Install for Free</span>
+  <span>Install<span class="objection"> - it's free</span></span>
 </a>
 
-<style>
+<style lang="scss">
   a {
     font-family: system-ui, sans-serif;
     text-decoration: none;
@@ -24,10 +24,18 @@ import brandVscodeSVG from "../assets/brand-vscode.svg?raw";
     background: hsl(261.6deg 51.87% 47.25%);
     color: hsl(261.6deg 51.87% 95.25%);
     transition: background-color 250ms ease-in-out;
+    &:hover {
+      border-color: hsl(211 81% 93%);
+      background-color: hsl(261.6deg 51.87% 27.25%);
+    }
+    &:focus {
+      outline: 2px solid hsl(261.6deg 16.87% 67.25%);
+      outline-offset: 2px;
+    }
   }
-
-  a:hover {
-    border-color: hsl(211 81% 93%);
-    background-color: hsl(261.6deg 51.87% 27.25%);
+  .objection {
+    font-size: 0.8em;
+    color: hsl(261.6deg 51.87% 95.25%);
+    opacity: 0.8;
   }
 </style>
