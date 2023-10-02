@@ -1,33 +1,53 @@
 ---
 import { Image } from "astro:assets";
-import logoSrc from "../assets/alan.svg";
+import logoSrc from "../assets/alan-with-background.png";
 ---
 
 <header>
   <!-- source: https://x.com/artur_bien/status/1707845116176519313?s=20 -->
   <div class="bien-glass"></div>
   <div class="bien-glass-edge"></div>
-  <div class="logo">
-    <Image src={logoSrc} alt="Alan logo" />
-    <span>Alan AI</span>
+  <div class="bien-glass-edge" data-place="left"></div>
+  <div class="bien-glass-edge" data-place="right"></div>
+  <div class="bien-glass-edge" data-place="top"></div>
+  <div class="inner-wrapper">
+    <div class="logo">
+      <Image src={logoSrc} alt="Alan logo" />
+      <span>Alan AI</span>
+    </div>
+    <nav>
+      <!-- <a href="#">FAQs</a> -->
+    </nav>
   </div>
-  <nav>
-    <!-- <a href="#">FAQs</a> -->
-  </nav>
 </header>
 
-<style>
+<style lang="scss">
   header {
-    position: sticky;
-    top: 0;
-    width: 100%;
     z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      width: calc(100% - var(--padding-left-right) * 2);
+      max-width: 420px;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .inner-wrapper {
+    --padding: 12px;
+    z-index: 3;
+    position: relative;
     height: var(--header-height);
     display: flex;
     justify-content: center;
     align-items: center;
     justify-content: space-between;
-    padding: 12px var(--padding-left-right);
+    padding: 12px var(--padding);
+    background: hsl(210deg 40% 20% / 0.15);
     .logo {
       z-index: 2;
     }
@@ -45,12 +65,16 @@ import logoSrc from "../assets/alan.svg";
       }
     }
   }
+
   /**
    * source: https://x.com/artur_bien/status/1707845116176519313?s=20
    */
   .bien-glass {
     position: absolute;
     inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+
     /*   Extend the backdrop to the bottom for it to "collect the light" outside of the nav */
     --extended-by: 100px;
     bottom: calc(-1 * var(--extended-by));
@@ -58,7 +82,6 @@ import logoSrc from "../assets/alan.svg";
     --filter: blur(30px);
     -webkit-backdrop-filter: var(--filter);
     backdrop-filter: var(--filter);
-    pointer-events: none;
 
     /*   Cut the part of the backdrop that falls outside of <nav /> */
     --cutoff: calc(100% - var(--extended-by));
@@ -75,6 +98,8 @@ import logoSrc from "../assets/alan.svg";
     z-index: -1;
     left: 0;
     right: 0;
+    pointer-events: none;
+    border-radius: inherit;
 
     --extended-by: 80px;
     --offset: 20px;
@@ -82,7 +107,8 @@ import logoSrc from "../assets/alan.svg";
     height: calc(var(--extended-by) + var(--offset));
     /*   Offset is used to snuck the border backdrop slightly under the main backdrop for  smoother effect */
     top: calc(100% - var(--offset) + var(--thickness));
-
+    width: calc(100% + calc(var(--thickness) * 2));
+    left: calc(var(--thickness) * -1);
     /* Make the blur bigger so that the light bleed effect spreads wider than blur on the first backdrop */
     /* Increase saturation and brightness to fake smooth chamfered edge reflections */
     --filter: blur(40px) saturate(160%) brightness(1.3);
@@ -96,6 +122,47 @@ import logoSrc from "../assets/alan.svg";
       black var(--offset),
       transparent var(--offset)
     );
+
+    &[data-place="top"] {
+      top: auto;
+      bottom: calc(100% - var(--offset) + var(--thickness));
+      -webkit-mask-image: linear-gradient(
+        to top,
+        black 0,
+        black var(--offset),
+        transparent var(--offset)
+      );
+    }
+
+    &[data-place="left"] {
+      --left: calc(var(--extended-by) + var(--thickness));
+      top: 0;
+      left: calc(var(--left) * -1);
+      right: unset;
+      bottom: 0;
+      width: calc(var(--extended-by) + var(--offset));
+      height: auto;
+      -webkit-mask-image: linear-gradient(
+        to left,
+        black 0,
+        black var(--offset),
+        transparent var(--offset)
+      );
+    }
+
+    &[data-place="right"] {
+      top: 0;
+      bottom: 0;
+      left: calc(100% - var(--offset) + var(--thickness));
+      width: calc(var(--extended-by) + var(--offset));
+      height: auto;
+      -webkit-mask-image: linear-gradient(
+        to right,
+        black 0,
+        black var(--offset),
+        transparent var(--offset)
+      );
+    }
   }
 
   .logo {
@@ -108,7 +175,7 @@ import logoSrc from "../assets/alan.svg";
       width: var(--logo-size);
     }
     & span {
-      font-size: 1.3rem;
+      font-size: 1rem;
       font-weight: 500;
     }
   }
