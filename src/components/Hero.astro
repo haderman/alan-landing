@@ -2,6 +2,7 @@
 import IconCircleCheckSrc from "../components/IconCircleCheck.astro";
 import CTA from "./CTA.astro";
 import GridPattern from "./GridPattern.astro";
+import Video from "./Video.astro";
 ---
 
 <section class="hero">
@@ -13,17 +14,7 @@ import GridPattern from "./GridPattern.astro";
     <p>Set up multiple AI chats. Each one has its own system prompt.</p>
     <CTA />
   </article>
-  <div class="wrapper-hero-video">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      onloadstart="this.playbackRate = 2;"
-    >
-      <source src="demo-astro.mp4" type="video/mp4" />
-    </video>
-  </div>
+  <Video />
 </section>
 
 <style is:global lang="scss">
@@ -35,12 +26,13 @@ import GridPattern from "./GridPattern.astro";
     flex-wrap: wrap;
     height: 100%;
     position: relative;
-    padding-top: calc(5rem + var(--header-height));
+    padding-top: calc(6rem + var(--header-height));
     & .wrapper-hero-video {
       z-index: 1;
       flex-grow: 1;
       flex-shrink: 1;
       max-width: 960px;
+      width: 100%;
       aspect-ratio: 1728 / 1075;
     }
   }
@@ -64,7 +56,6 @@ import GridPattern from "./GridPattern.astro";
       font-weight: 300;
       text-align: center;
     }
-
   }
   .headline {
     font-size: clamp(1.5rem, 6vw, 3rem);
