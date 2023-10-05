@@ -1,15 +1,17 @@
 ---
 import { Image } from "astro:assets";
 import logoSrc from "../assets/alan-with-background.png";
+import Squircle from "./Squircle.astro";
 ---
 
 <header>
   <!-- source: https://x.com/artur_bien/status/1707845116176519313?s=20 -->
-  <div class="bien-glass"></div>
+  <Squircle />
+  <!-- <div class="bien-glass"></div>
   <div class="bien-glass-edge"></div>
   <div class="bien-glass-edge" data-place="left"></div>
   <div class="bien-glass-edge" data-place="right"></div>
-  <div class="bien-glass-edge" data-place="top"></div>
+  <div class="bien-glass-edge" data-place="top"></div> -->
   <div class="inner-wrapper">
     <div class="logo">
       <Image src={logoSrc} alt="Alan logo" />
@@ -28,9 +30,14 @@ import logoSrc from "../assets/alan-with-background.png";
     top: 0;
     left: 0;
     width: 100%;
+
+    max-width: calc(100vw - 24px);
+    top: 10px;
+    left: 10px;
+
     @media screen and (min-width: 768px) {
       width: calc(100% - var(--padding-left-right) * 2);
-      max-width: 420px;
+      max-width: 620px;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
