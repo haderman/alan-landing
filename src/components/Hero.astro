@@ -25,7 +25,7 @@ import Video from "./Video.astro";
     flex-wrap: wrap;
     height: 100%;
     position: relative;
-    padding-top: calc(8rem + var(--header-height));
+    padding-top: clamp(5rem + var(--header-height), 20vw, 10rem + var(--header-height));
     & .wrapper-hero-video {
       z-index: 1;
       flex-grow: 1;

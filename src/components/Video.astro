@@ -3,7 +3,7 @@ import videoSrc from "../assets/demo-astro.mp4";
 ---
 
 <div class="wrapper-hero-video">
-  <video controls>
+  <video controls autoplay>
     <source src={videoSrc} type="video/mp4" />
   </video>
 </div>
@@ -18,7 +18,7 @@ import videoSrc from "../assets/demo-astro.mp4";
     width: 100%;
     aspect-ratio: 1728 / 1075;
     & video {
-      z-index: 0;
+      z-index: 1;
       width: 100%;
       height: 100%;
     }
