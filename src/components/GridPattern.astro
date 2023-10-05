@@ -4,7 +4,12 @@
 
 <div class="hero-bg-wrapper">
   <div class="overlay">
-    <div class="bubble"></div>
+    <div class="rect"></div>
+    <div class="rect"></div>
+    <div class="rect"></div>
+    <div class="rect"></div>
+    <div class="rect"></div>
+    <div class="rect"></div>
     <!-- <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div> -->
@@ -59,61 +64,83 @@
     height: 100%;
     z-index: 0;
     background-color: black;
-    // background-color: hsl(240, 53%, 93%);
-    /*
-    * Created with https://www.css-gradient.com
-    * Gradient link: https://www.css-gradient.com/?c1=11656c&c2=980d2f&gt=r&gd=dcc
-    */
-    // background: #11656C;
-    // background: radial-gradient(at center, hsl(185, 73%, 75%), hsl(345, 84%, 82%));
+    backdrop-filter: blur(40px);
+
+    display: flex;
+    align-items: flex-end;
   }
-  .bubble {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    // aspect-ratio: 1 / 1;
-    // border-radius: 50%;
-    background: radial-gradient(at center, hsl(210, 73%, 35%), black 80%);
-    background: linear-gradient(to bottom, hsl(187 42% 3% / 1) 11.2%, hsl(187 42% 20% / 1) 91.1%)
-    // animation: rotate 5s infinite linear;
+  .rect {
+    flex: 1;
+    height: 60%;
+
+    --part-1: hsl(287 42% 3% / 1) 11.2%;
+    --part-2: hsl(287 42% 3% / 1) 91.2%;
+
+    --h-ratio: 5;
+    --h: 200;
+    --s: 100%;
+    --l: 24%;
+    --a: 1;
+
+    &:nth-child(1) {
+      --hue: calc(var(--h) + var(--h-ratio) * 0);
+      --color: hsla(var(--hue), var(--s), var(--l), var(--a));
+      background: linear-gradient(
+        to bottom,
+        var(--part-1),
+        var(--color) 51.1%,
+        var(--part-2)
+      );
+    }
+    &:nth-child(2) {
+      --hue: calc(var(--h) + var(--h-ratio) * 1);
+      --color: hsla(var(--hue), var(--s), var(--l), var(--a));
+      background: linear-gradient(
+        to bottom,
+        var(--part-1),
+        var(--color) 51.1%,
+        var(--part-2)
+      );
+    }
+    &:nth-child(3) {
+      --hue: calc(var(--h) + var(--h-ratio) * 2);
+      --color: hsla(var(--hue), var(--s), var(--l), var(--a));
+      background: linear-gradient(
+        to bottom,
+        var(--part-1),
+        color 51.1%,
+        var(--part-2)
+      );
+    }
+    &:nth-child(4) {
+      --hue: calc(var(--h) + var(--h-ratio) * 3);
+      --color: hsla(var(--hue), var(--s), var(--l), var(--a));
+      background: linear-gradient(
+        to bottom,
+        var(--part-1),
+        var(--color) 51.1%,
+        var(--part-2)
+      );
+    }
+    &:nth-child(5) {
+      --hue: calc(var(--h) + var(--h-ratio) * 4);
+      --color: hsla(var(--hue), var(--s), var(--l), var(--a));
+      background: linear-gradient(
+        to bottom,
+        var(--part-1),
+        var(--color) 51.1%,
+        var(--part-2)
+      );
+    }
+    &:nth-child(6) {
+      --hue: calc(var(--h) + var(--h-ratio) * 5);
+      --color: hsla(var(--hue), var(--s), var(--l), var(--a));
+      background: linear-gradient(
+        to bottom,
+        var(--part-1),
+        var(--color) 51.1%,
+        var(--part-2)
+      );
+    }
   }
-
-
-  .bubble:nth-child(1) {
-    // transform: translate(-50%, -50%);
-  }
-
-  .bubble:nth-child(2) {
-    left: 100vw;
-    transform: translate(-50%, -50%);
-  }
-
-  .bubble:nth-child(3) {
-    top: 100vh;
-    transform: translate(-50%, -50%);
-  }
-
-  .bubble:nth-child(4) {
-    top: 100vh;
-    left: 100vw;
-    transform: translate(-50%, -50%);
-  }
-
-  // .bubble:nth-child(2) {
-  //   animation-delay: 1s;
-  // }
-
-  // .bubble:nth-child(3) {
-  //   animation-delay: 2s;
-  // }
-
-  // .bubble:nth-child(4) {
-  //   animation-delay: 3s;
-  // }
-
-  // .bubble:nth-child(5) {
-  //   animation-delay: 4s;
-  // }
 </style>
