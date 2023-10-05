@@ -54,7 +54,13 @@
     position: absolute;
     border-color: hsl(214.29deg 31.82% 91.37%);
     & > .glass-border {
+      /*
+       * This should be hidden if there is not support for "mask-image: paint(inset-border)"
+       */
+      opacity: 0;
+      pointer-events: none;
       position: absolute;
+
       /**
        * The following variables are used in the border.js paint worklet.
        * for context "mask-image: paint(inset-border)" calls the paint worklet.
@@ -66,20 +72,40 @@
       padding: var(--look-ahead);
       background: var(--bg);
       backdrop-filter: blur(var(--blur)) var(--backdrop-filter);
-      mask-image: paint(inset-border);
       mask-clip: content-box;
       border-radius: calc(var(--border-radius) + var(--look-ahead));
-      pointer-events: none;
+    }
+  }
+
+  @supports (mask-image: paint(inset-border)) {
+    .squircle[data-status="loaded"] {
+      & .glass-border {
+        mask-image: paint(inset-border);
+        opacity: 1;
+      }
     }
   }
 </style>
 
-<script async>
-  (async function () {
+<script async>;
+  loadPaintWorklet()
+    .then(updateSquircleStatus)
+    .catch((err) => {
+      console.error("Paint worklet failed to load (border.js) - ", err);
+    });
+
+  async function loadPaintWorklet() {
     if (!("paintWorklet" in CSS)) {
       await import("https://unpkg.com/css-paint-polyfill");
     }
 
-    CSS.paintWorklet.addModule(`border.js`);
-  })();
+    return CSS.paintWorklet.addModule(`border.js`);
+  }
+
+  function updateSquircleStatus() {
+    const $el = document.getElementsByClassName("squircle");
+    for (let i = 0; i < $el.length; i++) {
+      $el[i].setAttribute("data-status", "loaded");
+    }
+  }
 </script>

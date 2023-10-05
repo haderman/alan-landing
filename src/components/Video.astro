@@ -1,15 +1,10 @@
 ---
-
+import videoSrc from "../assets/demo-astro.mp4";
 ---
 
 <div class="wrapper-hero-video">
-  <video
-    muted
-    loop
-    playsinline
-    onloadstart="this.playbackRate = 2;"
-  >
-    <source src="demo-astro.mp4" type="video/mp4" />
+  <video controls>
+    <source src={videoSrc} type="video/mp4" />
   </video>
 </div>
 
@@ -19,11 +14,13 @@
     z-index: 1;
     flex-grow: 1;
     flex-shrink: 1;
-    max-width: 960px;
+    max-width: 1200px;
     width: 100%;
     aspect-ratio: 1728 / 1075;
     & video {
       z-index: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 </style>

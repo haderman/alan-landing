@@ -1,5 +1,4 @@
 ---
-import IconCircleCheckSrc from "../components/IconCircleCheck.astro";
 import CTA from "./CTA.astro";
 import GridPattern from "./GridPattern.astro";
 import Video from "./Video.astro";
@@ -21,19 +20,17 @@ import Video from "./Video.astro";
   .hero {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 7rem;
     align-items: center;
     flex-wrap: wrap;
     height: 100%;
     position: relative;
-    padding-top: calc(6rem + var(--header-height));
+    padding-top: calc(8rem + var(--header-height));
     & .wrapper-hero-video {
       z-index: 1;
       flex-grow: 1;
       flex-shrink: 1;
-      max-width: 960px;
       width: 100%;
-      aspect-ratio: 1728 / 1075;
     }
   }
   .hero > article {
