@@ -1,0 +1,161 @@
+---
+import Identicon from "../common/Identicon.astro";
+
+const { seed } = Astro.props;
+---
+
+<div class="background">
+  <div class="circle">
+    <Identicon seed={seed} />
+  </div>
+  <div class="circle" />
+  <div class="circle" />
+  <div class="circle" />
+  <div class="backdrop" />
+</div>
+
+<style lang="scss">
+  .background {
+    overflow: hidden;
+    /* --interval: 10s; */
+    --intervalx2: 20s;
+    --blur-radius: 1px;
+    --l: 60%;
+    --a: 0.6;
+    --color: hsla(var(--h), var(--s), var(--l), var(--a));
+    --color2: hsla(var(--h), var(--s), calc(var(--l) + 10%), var(--a));
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+
+    & :global(.identicon) {
+      width: 64px;
+      height: 64px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    & svg {
+      fill: currentColor;
+
+      & path {
+        fill: currentColor;
+      }
+    }
+  }
+
+  .background :global(svg) {
+    fill: hsl(210 30% 6%);
+    fill: currentColor;
+  }
+
+  .background :global(svg path) {
+    fill: inherit;
+  }
+
+  .circle {
+    z-index: 6;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 30%;
+    aspect-ratio: 1 / 1;
+    background-color: hsl(210 30% 0%);
+    border-radius: 50%;
+    color: var(--color);
+    box-shadow: inset 0px 0px var(--blur-radius) 0px var(--color2),
+      0px 0px 10px 0px var(--color);
+  }
+  .circle:nth-child(1) {
+    animation: pulsar-inset var(--interval) infinite ease-in-out;
+  }
+  .circle:nth-child(2) {
+    z-index: 5;
+    transform: translate(-50%,-50%) scale(1.5);
+    border-color: hsl(210 30% 11%);
+    z-index: 2;
+  }
+  .circle:nth-child(3) {
+    z-index: 4;
+    transform: translate(-50%,-50%) scale(1.8);
+    border-color: hsl(210 30% 16%);
+    box-shadow: 0px 0px 20% 0px hsl(206.57deg 76.74% 19.12%);
+    animation: pulsar var(--interval) infinite ease-in-out;
+  }
+  .circle:nth-child(4) {
+    z-index: 3;
+    transform: translate(-50%,-50%) scale(3);
+    border-color: hsl(210 30% 21%);
+    background-color: hsl(210 30% 0%);
+    box-shadow: inset 0px 0px 13% 1% hsl(210 40% 30% / 0.3);
+    animation: pulsar-inset var(--interval) infinite ease-in-out;
+  }
+  .agent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  .agent[data-agent="alan"] {
+    color: hsl(260 45% 45% / 0.6);
+    animation: pulsar-agent var(--interval) infinite ease-in-out;
+  }
+  .agent[data-agent="gitana"] {
+    color: hsl(210 45% 45% / 0.6);
+    animation: pulsar-agent var(--interval) infinite ease-in-out;
+    animation-delay: calc(var(--interval) / 2);
+  }
+
+  @keyframes pulsar {
+    0% {
+      box-shadow: 0px 0px 20% hsl(210 45% 45% / 0.6);
+    }
+    50% {
+      box-shadow: 0px 0px 10% hsl(260 45% 45% / 0.6);
+    }
+    100% {
+      box-shadow: 0px 0px 20% hsl(210 45% 45% / 0.6);
+    }
+  }
+  @keyframes pulsar-inset {
+    0% {
+      box-shadow: inset 0px 0px 15% 1% hsl(210 45% 45% / 0.6);
+    }
+    50% {
+      box-shadow: inset 0px 0px 5% 1% hsl(260 45% 45% / 0.6);
+    }
+    100% {
+      box-shadow: inset 0px 0px 15% 1% hsl(210 45% 45% / 0.6);
+    }
+  }
+  @keyframes pulsar-agent {
+    0% {
+      opacity: 0;
+    }
+    /* 30% {
+      opacity: 0.8;
+    } */
+    50% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>

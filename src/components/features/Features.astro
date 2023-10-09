@@ -1,0 +1,52 @@
+---
+import Card from "./Card.astro";
+import spyOffSvg from "../../assets/icons/spy-off.svg?raw";
+import messageSvg from "../../assets/icons/message.svg?raw";
+import keySvg from "../../assets/icons/key.svg?raw";
+---
+
+<section>
+  <div>
+    <Card
+      title="Integrations"
+      description="Use your personal OpenAI API key, securely stored in your system keychain."
+      color="210"
+      icon={keySvg}
+    />
+    <Card
+      title="Privacy"
+      description="All data is only stored locally. Just keep in mind, it's also sent to OpenAI API."
+      color="260"
+      icon={spyOffSvg}
+    />
+    <Card
+      title="Custom Instructions"
+      description="Create several agents, each with their own custom instruction."
+      color="280"
+      icon={messageSvg}
+    />
+  </div>
+</section>
+
+<style lang="scss">
+  section {
+    & > div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-grow: 1;
+      flex-shrink: 1;
+      gap: 1.5rem;
+      margin: auto;
+      max-width: 1280px;
+      min-height: 30vh;
+    }
+
+    & :global(article) {
+      flex-grow: 1;
+      flex-shrink: 1;
+      width: 100%;
+      flex-basis: 320px;
+    }
+  }
+</style>

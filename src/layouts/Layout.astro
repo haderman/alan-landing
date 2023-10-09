@@ -56,13 +56,14 @@ const seoImageSrc =
 ></script>
 
 <script type="text/partytown">
-window.dataLayer = window.dataLayer || [];
-function gtag() {
-  dataLayer.push(arguments);
-}
-gtag("js", new Date());
+  window.dataLayer = window.dataLayer || [];
 
-gtag("config", GTM_ID);
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag("js", new Date());
+  gtag("config", GTM_ID);
 </script>
 
 <style is:global>
