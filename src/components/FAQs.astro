@@ -1,0 +1,56 @@
+---
+import Accordion from "./FAQs/Accordion.astro";
+---
+
+<section class="faqs">
+  <h2>Frequently asked questions</h2>
+  <div class="accordion-container">
+    <Accordion title="How much does it cost?">
+      <p>You'll be happy to know Alan AI is completely free to use!</p>
+    </Accordion>
+    <Accordion title="How can I use gpt-4?">
+      <p>
+        Alan use all gpt models availables for your api key.
+        If you don't have access to gpt-4 this might be useful for you.
+        <a href="https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4" target="_blank">
+          How can I access gpt-4?
+        </a>
+      </p>
+    </Accordion>
+    <Accordion title="What happens with your data?">
+      <p>
+        Alan uses your own API key to connect to OpenAI so your prompt and content
+        goes directly through the Open AI servers. The data is stored locally on
+        your computer and is not sent to any other server.
+      </p>
+    </Accordion>
+    <Accordion title="Where can you get your API Key?">
+      <p>
+        You need to create an account on OpenAI if you don't have one already.
+        Then you can get your API key from the
+        <a href="https://platform.openai.com/account/api-keys" target="_blank">
+          API Keys
+        </a> page.
+      </p>
+    </Accordion>
+    <Accordion title="Which IDEs are supported?">
+      <p>Alan is available only for Visual Studio Code. </p>
+    </Accordion>
+  </div>
+</section>
+
+<style lang="scss">
+  .faqs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .accordion-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
+

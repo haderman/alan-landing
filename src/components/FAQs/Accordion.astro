@@ -1,0 +1,81 @@
+---
+const { title } = Astro.props;
+---
+
+<details>
+  <summary>
+    <span>{title}</span>
+  </summary>
+  <div>
+    <slot />
+  </div>
+</details>
+
+<style lang="scss">
+  details {
+    --pad: 1rem;
+    --border-color: hsl(210 18% 35% / 0.6);
+    --summary-color: hsl(210 18% 15% / 0.3);
+    --marker-color: hsl(210 18% 35% / 1);
+    --marker-hover-color: hsl(210 78% 55% / 1);
+    --p-background-color: hsl(210 88% 5% / 0.4);
+    --link-color: hsl(210 78% 55% / 1);
+    --link-visited-color: hsl(240.65 55.78% 60.88%);
+    overflow: hidden;
+    margin: var(--pad) 0;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    &[open] {
+      summary {
+        border-bottom: 1px solid var(--border-color);
+      }
+      p {
+        background-color: var(--p-background-color);
+      }
+    }
+  }
+
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: var(--pad);
+    outline: none;
+    background-color: var(--summary-color);
+    &:focus {
+      span {
+        outline: 1px solid var(--marker-hover-color);
+        border-radius: 4px;
+        outline-offset: 0.4rem;
+      }
+    }
+    &:hover {
+      &::marker {
+        color: var(--marker-hover-color);
+      }
+    }
+    &::marker {
+      color: var(--marker-color);
+    }
+    & > span {
+      margin-left: 0.8rem;
+    }
+  }
+  :global(h2) {
+    margin: 0;
+    padding: var(--pad);
+  }
+  :global(p) {
+    padding: var(--pad);
+    margin: 0;
+  }
+  :global(a) {
+    text-decoration: none;
+    &:link {
+      color: var(--link-color);
+    }
+    &:visited {
+      color: var(--link-visited-color);
+    }
+  }
+</style>
+
