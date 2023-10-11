@@ -1,0 +1,46 @@
+---
+import CTA from "./common/CTA.astro";
+---
+
+<section class="last-cta">
+  <article>
+    <h1 class="headline text-gradient">
+      Try Alan AI for free
+    </h1>
+    <p>
+      Tap into the power of AI right inside your Visual Studio Code, today.
+    </p>
+    <CTA />
+  </article>
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-bg-2);
+  }
+
+  article {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 1;
+    flex-grow: 1;
+    margin: auto;
+    & > h1 {
+      margin-bottom: 0.9rem;
+      font-size: clamp(1.5rem, 6vw, 3rem);
+      text-align: center;
+      max-width: 25ch;
+    }
+    & > p {
+      margin-bottom: 2.6rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+</style>
