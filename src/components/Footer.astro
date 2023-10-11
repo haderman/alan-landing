@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import logoSrc from "../assets/alan-with-background.png";
+---
+
+<footer>
+  <div class="logo">
+    <Image src={logoSrc} alt="Alan logo" />
+    <span>Alan AI</span>
+  </div>
+  <nav>
+    <a href="https://marketplace.visualstudio.com/items/haderman.alanai/changelog" target="_blank">
+      Changelog
+    </a>
+  </nav>
+</footer>
+
+<style lang="scss">
+  footer {
+    --link-color: hsl(210 18% 85% / 1);
+    --link-visited-color: hsl(240.65 vvvvvv5.78% 50.88%);
+    --link-focus-color: hsl(210 48% 55% / 1);
+    border-top: 1px solid hsl(210 10% 15% / 1);
+    background-color: hsl(210 20% 20% / 0.25);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & a {
+      text-decoration: none;
+      &:link {
+        color: var(--link-color);
+      }
+      &:visited {
+        color: var(--link-visited-color);
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+      &:focus {
+        outline: 1px solid var(--link-focus-color);
+        outline-offset: 4px;
+        border-radius: 4px;
+      }
+    }
+  }
+  .logo {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    & img {
+      height: var(--logo-size);
+      width: var(--logo-size);
+    }
+    & span {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+  @media screen and (min-width: 720px) {
+    footer {
+      justify-content: space-around;
+    }
+  }
+</style>
