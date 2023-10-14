@@ -1,0 +1,235 @@
+/**
+ * source: https://utopia.fyi/blog/css-modular-scales
+ */
+:root {
+  /**
+   * The following ones are like the private custom properties and should not be used in the code
+   */
+  --fluid-min-width: 120;
+  --fluid-max-width: 1500;
+  --fluid-min-size: 10;
+  --fluid-max-size: 14;
+  --fluid-min-ratio: 1.2;
+  --fluid-max-ratio: 1.33;
+
+  --fluid-screen: 100vw;
+  --fluid-bp: calc((var(--fluid-screen) - ((var(--fluid-min-width) / 16) * 1rem)) / ((var(--fluid-max-width) / 16) - (var(--fluid-min-width) / 16)));
+
+  --fluid-min-scale-0: var(--fluid-min-ratio);
+  --fluid-min-scale-1: var(--fluid-min-scale-0) * var(--fluid-min-ratio);
+  --fluid-min-scale-2: var(--fluid-min-scale-1) * var(--fluid-min-ratio);
+  --fluid-min-scale-3: var(--fluid-min-scale-2) * var(--fluid-min-ratio);
+  --fluid-min-scale-4: var(--fluid-min-scale-3) * var(--fluid-min-ratio);
+  --fluid-min-scale-5: var(--fluid-min-scale-4) * var(--fluid-min-ratio);
+  --fluid-min-scale-6: var(--fluid-min-scale-5) * var(--fluid-min-ratio);
+  --fluid-min-scale-7: var(--fluid-min-scale-6) * var(--fluid-min-ratio);
+  --fluid-min-scale-8: var(--fluid-min-scale-7) * var(--fluid-min-ratio);
+
+  --fluid-max-scale-0: var(--fluid-max-ratio);
+  --fluid-max-scale-1: var(--fluid-max-scale-0) * var(--fluid-max-ratio);
+  --fluid-max-scale-2: var(--fluid-max-scale-1) * var(--fluid-max-ratio);
+  --fluid-max-scale-3: var(--fluid-max-scale-2) * var(--fluid-max-ratio);
+  --fluid-max-scale-4: var(--fluid-max-scale-3) * var(--fluid-max-ratio);
+  --fluid-max-scale-5: var(--fluid-max-scale-4) * var(--fluid-max-ratio);
+  --fluid-max-scale-6: var(--fluid-max-scale-5) * var(--fluid-max-ratio);
+  --fluid-max-scale-7: var(--fluid-max-scale-6) * var(--fluid-max-ratio);
+  --fluid-max-scale-8: var(--fluid-max-scale-7) * var(--fluid-max-ratio);
+
+  --fluid-min-size-0: (var(--fluid-min-size)) / 16;
+  --fluid-min-size-1: (var(--fluid-min-size) * var(--fluid-min-scale-0)) / 16;
+  --fluid-min-size-2: (var(--fluid-min-size) * var(--fluid-min-scale-1)) / 16;
+  --fluid-min-size-3: (var(--fluid-min-size) * var(--fluid-min-scale-2)) / 16;
+  --fluid-min-size-4: (var(--fluid-min-size) * var(--fluid-min-scale-3)) / 16;
+  --fluid-min-size-5: (var(--fluid-min-size) * var(--fluid-min-scale-4)) / 16;
+  --fluid-min-size-6: (var(--fluid-min-size) * var(--fluid-min-scale-5)) / 16;
+  --fluid-min-size-7: (var(--fluid-min-size) * var(--fluid-min-scale-6)) / 16;
+  --fluid-min-size-8: (var(--fluid-min-size) * var(--fluid-min-scale-7)) / 16;
+
+  --fluid-max-size-0: (var(--fluid-max-size)) / 16;
+  --fluid-max-size-1: (var(--fluid-max-size) * var(--fluid-max-scale-0)) / 16;
+  --fluid-max-size-2: (var(--fluid-max-size) * var(--fluid-max-scale-1)) / 16;
+  --fluid-max-size-3: (var(--fluid-max-size) * var(--fluid-max-scale-2)) / 16;
+  --fluid-max-size-4: (var(--fluid-max-size) * var(--fluid-max-scale-3)) / 16;
+  --fluid-max-size-5: (var(--fluid-max-size) * var(--fluid-max-scale-4)) / 16;
+  --fluid-max-size-6: (var(--fluid-max-size) * var(--fluid-max-scale-5)) / 16;
+  --fluid-max-size-7: (var(--fluid-max-size) * var(--fluid-max-scale-6)) / 16;
+  --fluid-max-size-8: (var(--fluid-max-size) * var(--fluid-max-scale-7)) / 16;
+
+  /**
+   * The following ones are like the public custom properties and should be used in the code
+   */
+  --fluid--1: calc(var(--fluid-0) * 0.8);
+  --fluid-0: calc(((var(--fluid-min-size-0) * 1rem) + (var(--fluid-max-size-0) - var(--fluid-min-size-0)) * var(--fluid-bp)));
+  --fluid-1: calc(((var(--fluid-min-size-1) * 1rem) + (var(--fluid-max-size-1) - var(--fluid-min-size-1)) * var(--fluid-bp)));
+  --fluid-2: calc(((var(--fluid-min-size-2) * 1rem) + (var(--fluid-max-size-2) - var(--fluid-min-size-2)) * var(--fluid-bp)));
+  --fluid-3: calc(((var(--fluid-min-size-3) * 1rem) + (var(--fluid-max-size-3) - var(--fluid-min-size-3)) * var(--fluid-bp)));
+  --fluid-4: calc(((var(--fluid-min-size-4) * 1rem) + (var(--fluid-max-size-4) - var(--fluid-min-size-4)) * var(--fluid-bp)));
+  --fluid-5: calc(((var(--fluid-min-size-5) * 1rem) + (var(--fluid-max-size-5) - var(--fluid-min-size-5)) * var(--fluid-bp)));
+  --fluid-6: calc(((var(--fluid-min-size-6) * 1rem) + (var(--fluid-max-size-6) - var(--fluid-min-size-6)) * var(--fluid-bp)));
+  --fluid-7: calc(((var(--fluid-min-size-7) * 1rem) + (var(--fluid-max-size-7) - var(--fluid-min-size-7)) * var(--fluid-bp)));
+  --fluid-8: calc(((var(--fluid-min-size-8) * 1rem) + (var(--fluid-max-size-8) - var(--fluid-min-size-8)) * var(--fluid-bp)));
+}
+
+
+@media screen and (min-width: 1500px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}
+
+:root {
+  --accent: 136, 58, 234;
+  --accent-light: 224, 204, 250;
+  --accent-dark: 49, 10, 101;
+  --accent-gradient: linear-gradient(
+    45deg,
+    rgb(var(--accent)),
+    rgb(var(--accent-light)) 30%,
+    white 60%
+  );
+
+  --primary-color: hsl(210deg 30% 2%);
+  // --color: 210deg 27% 7%;
+
+  --surface-1: hsl(210deg 27% 0%);
+  --surface-2: hsl(210deg 27% 7% / 50%);
+  --surface-3: hsl(210deg 6% 10%);
+
+  --padding-left-right: clamp(10px, 3vw, 48px);
+  --primary-text: hsl(210, 10%, 70%);
+  --header-height: 60px;
+  --logo-size: 40px;
+
+  /** https://en.wikipedia.org/wiki/Line_length */
+  --measure: 60ch;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+figcaption {
+  max-inline-size: var(--measure);
+  text-wrap: balance;
+}
+
+html {
+  font-family: "Montserrat Variable", system-ui, sans-serif;
+  background: hsl(223, 16%, 9%);
+  height: 100%;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100%;
+  color: var(--primary-text);
+  background-color: var(--surface-1);
+}
+
+main {
+  display: block;
+  overflow: hidden;
+}
+
+section {
+  position: relative;
+  padding: var(--fluid-6) var(--padding-left-right);
+  gap: var(--fluid-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  font-size: var(--fluid--1);
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: var(--fluid-5);
+  text-align: center;
+}
+
+p {
+  font-size: var(--fluid-1);
+}
+
+h2 {
+  font-size: var(--fluid-3);
+}
+
+summary {
+  font-size: var(--fluid-1);
+  font-weight: 500;
+}
+
+h1 + h2 {
+  font-size: var(--fluid-2);
+  font-weight: 400;
+  text-align: center;
+}
+
+.icon {
+  stroke-width: 1px;
+}
+
+.text-gradient {
+  background: linear-gradient(308deg,hsl(201 14% 59% / 1) 20%,hsl(189 58% 100% / 1));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+}
+
+.text-gradient-2 {
+  background: linear-gradient(264deg,hsl(207, 90%, 54%) 20%,hsl(262, 52%, 47%));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+}
+
+/*
+ * Scrollbar style
+ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    231deg,
+    hsl(210deg 20% 14.57%) 20%,
+    hsl(210deg 20% 14.57%) 40%,
+    hsl(210deg 20% 14.57%)
+  );
+  border-radius: 10px;
+  &:hover {
+    background: hsl(186.79deg 100% 27.57%);
+  }
+}

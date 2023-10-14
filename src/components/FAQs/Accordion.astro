@@ -1,10 +1,15 @@
 ---
 const { title } = Astro.props;
+const [lastWord, ...restOfTitle] = title.split(" ").reverse();
+const titleWithLastWord = [...restOfTitle].reverse().join(" ") + " ";
 ---
 
 <details>
   <summary>
-    <span>{title}</span>
+    <span>
+      {titleWithLastWord}
+      <span class="text-gradient-2">{lastWord}</span>
+    </span>
   </summary>
   <div>
     <slot />
@@ -42,7 +47,7 @@ const { title } = Astro.props;
     outline: none;
     background-color: var(--summary-color);
     &:focus {
-      span {
+      & > span {
         outline: 1px solid var(--marker-hover-color);
         border-radius: 4px;
         outline-offset: 0.4rem;
