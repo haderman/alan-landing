@@ -18,7 +18,7 @@ const titleWithLastWord = [...restOfTitle].reverse().join(" ") + " ";
 
 <style lang="scss">
   details {
-    --pad: 1rem;
+    --pad: var(--fluid-0);
     --border-color: hsl(210 18% 35% / 0.6);
     --summary-color: hsl(210 18% 15% / 0.3);
     --marker-color: hsl(210 18% 35% / 1);
@@ -38,6 +38,12 @@ const titleWithLastWord = [...restOfTitle].reverse().join(" ") + " ";
         background-color: var(--p-background-color);
       }
     }
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   summary {
@@ -50,7 +56,7 @@ const titleWithLastWord = [...restOfTitle].reverse().join(" ") + " ";
       & > span {
         outline: 1px solid var(--marker-hover-color);
         border-radius: 4px;
-        outline-offset: 0.4rem;
+        outline-offset: 0.2rem;
       }
     }
     &:hover {
@@ -62,7 +68,7 @@ const titleWithLastWord = [...restOfTitle].reverse().join(" ") + " ";
       color: var(--marker-color);
     }
     & > span {
-      margin-left: 0.8rem;
+      margin-left: var(--fluid--3);
     }
   }
   :global(h2) {

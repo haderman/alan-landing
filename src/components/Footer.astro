@@ -18,11 +18,10 @@ import logoSrc from "../assets/alan-with-background.png";
 <style lang="scss">
   footer {
     --link-color: hsl(210 18% 85% / 1);
-    --link-visited-color: hsl(240.65 vvvvvv5.78% 50.88%);
+    --link-visited-color: hsl(240.65 5.78% 50.88%);
     --link-focus-color: hsl(210 48% 55% / 1);
-    border-top: 1px solid hsl(210 10% 15% / 1);
-    background-color: hsl(210 20% 20% / 0.25);
-    padding: 1rem;
+    border-top: 1px solid hsl(210 10% 10% / 1);
+    padding: var(--fluid--1) var(--padding-left-right);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,7 +47,7 @@ import logoSrc from "../assets/alan-with-background.png";
     z-index: 1;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--fluid--1);
     & img {
       height: var(--logo-size);
       width: var(--logo-size);

@@ -58,6 +58,9 @@
   /**
    * The following ones are like the public custom properties and should be used in the code
    */
+  --fluid--3: calc(var(--fluid-0) * 0.2);
+  --fluid--3: calc(var(--fluid-0) * 0.4);
+  --fluid--2: calc(var(--fluid-0) * 0.6);
   --fluid--1: calc(var(--fluid-0) * 0.8);
   --fluid-0: calc(((var(--fluid-min-size-0) * 1rem) + (var(--fluid-max-size-0) - var(--fluid-min-size-0)) * var(--fluid-bp)));
   --fluid-1: calc(((var(--fluid-min-size-1) * 1rem) + (var(--fluid-max-size-1) - var(--fluid-min-size-1)) * var(--fluid-bp)));
@@ -91,11 +94,11 @@
   --primary-color: hsl(210deg 30% 2%);
   // --color: 210deg 27% 7%;
 
-  --surface-1: hsl(210deg 27% 0%);
+  --surface-1: hsl(200deg 50% 0% / 30%);
   --surface-2: hsl(210deg 27% 7% / 50%);
   --surface-3: hsl(210deg 6% 10%);
 
-  --padding-left-right: clamp(10px, 3vw, 48px);
+  --padding-left-right: var(--fluid--1);
   --primary-text: hsl(210, 10%, 70%);
   --header-height: 60px;
   --logo-size: 40px;
@@ -130,7 +133,7 @@ figcaption {
 
 html {
   font-family: "Montserrat Variable", system-ui, sans-serif;
-  background: hsl(223, 16%, 9%);
+  background: black;
   height: 100%;
 }
 
@@ -177,7 +180,7 @@ p {
 }
 
 h2 {
-  font-size: var(--fluid-3);
+  font-size: var(--fluid-2);
 }
 
 summary {
@@ -186,7 +189,7 @@ summary {
 }
 
 h1 + h2 {
-  font-size: var(--fluid-2);
+  font-size: var(--fluid-1);
   font-weight: 400;
   text-align: center;
 }

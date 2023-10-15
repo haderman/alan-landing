@@ -5,72 +5,30 @@ import Squircle from "./common/Squircle.astro";
 ---
 
 <header>
-  <!-- source: https://x.com/artur_bien/status/1707845116176519313?s=20 -->
-  <Squircle />
-  <!-- <div class="bien-glass"></div>
-  <div class="bien-glass-edge"></div>
-  <div class="bien-glass-edge" data-place="left"></div>
-  <div class="bien-glass-edge" data-place="right"></div>
-  <div class="bien-glass-edge" data-place="top"></div> -->
   <div class="inner-wrapper">
+    <Squircle />
     <div class="logo">
       <Image src={logoSrc} alt="Alan logo" />
       <span>Alan AI</span>
     </div>
-    <nav>
-      <!-- <a href="#">FAQs</a> -->
-    </nav>
   </div>
 </header>
 
 <style lang="scss">
   header {
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-
-    max-width: calc(100vw - 24px);
-    top: 10px;
-    left: 10px;
-
-    @media screen and (min-width: 768px) {
-      width: calc(100% - var(--padding-left-right) * 2);
-      max-width: 620px;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  .inner-wrapper {
-    --padding: 12px;
-    z-index: 3;
-    position: relative;
-    height: var(--header-height);
+    padding: var(--fluid-1);
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 12px var(--padding);
+    width: 100%;
+  }
+
+  .inner-wrapper {
+    z-index: 2;
+    position: relative;
+    padding: var(--fluid--1) var(--fluid-0);
     background: hsl(210deg 40% 20% / 0.15);
-    .logo {
-      z-index: 2;
-    }
-    & > nav {
-      display: flex;
-      gap: 24px;
-      & > a {
-        color: inherit;
-        text-decoration: none;
-        font-size: 1rem;
-        font-weight: 500;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
+    display: flex;
   }
 
   /**
