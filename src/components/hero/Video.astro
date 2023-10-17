@@ -1,12 +1,48 @@
 ---
 import videoSrc from "../../assets/demo-git.mp4";
+import videoPoster from "../../assets/hero-video-poster-3.png?url";
 ---
 
 <div class="wrapper-hero-video">
-  <video controls autoplay>
+  <video autoplay poster={videoPoster}>
     <source src={videoSrc} type="video/mp4" />
   </video>
 </div>
+<svg width="0" height="0">
+  <filter
+    id="ambilight"
+    width="300%"
+    height="300%"
+    x="-0.75"
+    y="-0.75"
+    color-interpolation-filters="sRGB"
+  >
+    <feOffset in="SourceGraphic" result="source-copy"></feOffset>
+    <feColorMatrix
+      in="source-copy"
+      type="saturate"
+      values="3"
+      result="saturated-copy"></feColorMatrix>
+    <feColorMatrix
+      in="saturated-copy"
+      type="matrix"
+      values="1 0 0 0 0
+                  0 1 0 0 0
+                  0 0 1 0 0
+                  33 33 33 101 -132"
+      result="bright-colors"></feColorMatrix>
+    <feMorphology
+      in="bright-colors"
+      operator="dilate"
+      radius="10"
+      result="spread"></feMorphology>
+    <feGaussianBlur in="spread" stdDeviation="30" result="ambilight-light"
+    ></feGaussianBlur>
+    <feOffset in="SourceGraphic" result="source"></feOffset>
+    <feComposite in="source" in2="ambilight-light" operator="over"
+    ></feComposite>
+  </filter>
+</svg>
 
 <style lang="scss">
   .wrapper-hero-video {
@@ -16,11 +52,17 @@ import videoSrc from "../../assets/demo-git.mp4";
     flex-shrink: 1;
     max-width: 1200px;
     width: 100%;
-    aspect-ratio: 1728 / 1075;
+    aspect-ratio: 99 / 64;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid hsl(210 20% 50% / 0.3);
+    background-color: hsl(210 20% 50% / 0.3);
     & video {
       z-index: 1;
       width: 100%;
       height: 100%;
+      box-shadow: none;
+      // filter: url(#ambilight);
     }
   }
 </style>

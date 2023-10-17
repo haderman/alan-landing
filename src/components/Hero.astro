@@ -1,11 +1,9 @@
 ---
 import CTA from "./common/CTA.astro";
-import GridPattern from "./hero/GridPattern.astro";
 import Video from "./hero/Video.astro";
 ---
 
 <section class="hero">
-  <GridPattern />
   <article>
     <h1 class="text-gradient">
       Multiple AI Chats Right in <br />Your IDE!
@@ -42,9 +40,11 @@ import Video from "./hero/Video.astro";
     margin: auto;
     & > h1 {
       margin-bottom: var(--fluid-1);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
     & > h2 {
       margin-bottom: var(--fluid-4);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
   }
 </style>

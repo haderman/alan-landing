@@ -1,6 +1,8 @@
 ---
 import "@fontsource-variable/montserrat";
 
+import Background from "../components/common/Background.astro";
+
 import "../styles/global.scss";
 
 interface Props {
@@ -38,6 +40,7 @@ const seoImageSrc =
     <title>{title}</title>
   </head>
   <body>
+    <Background />
     <noscript>
       <iframe
         src={"https://www.googletagmanager.com/ns.html?id=" + GTM_ID}
