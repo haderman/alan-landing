@@ -1,5 +1,6 @@
 ---
 import Accordion from "./FAQs/Accordion.astro";
+import PromptViewer from "./FAQs/PromptViewer.astro";
 ---
 
 <section class="faqs">
@@ -35,6 +36,9 @@ import Accordion from "./FAQs/Accordion.astro";
     </Accordion>
     <Accordion title="Which IDEs are supported?">
       <p>Alan is available only for Visual Studio Code. </p>
+    </Accordion>
+    <Accordion title="What is custom instruction used in the video?">
+      <PromptViewer />
     </Accordion>
   </div>
 </section>
