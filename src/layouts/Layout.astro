@@ -2,6 +2,7 @@
 import "@fontsource-variable/montserrat";
 
 import Background from "../components/common/Background.astro";
+import SEO from "../components/common/SEO.astro";
 
 import "../styles/global.scss";
 
@@ -21,22 +22,7 @@ const seoImageSrc =
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="title" content="Alan AI" />
-    <meta name="description" content="Multiple AI Chats Right in Your IDE!" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <meta property="og:image" itemprop="image" content={seoImageSrc} />
-
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.alanai.app/" />
-    <meta property="twitter:title" content="Alan AI" />
-    <meta
-      property="twitter:description"
-      content="Multiple AI Chats Right in Your IDE!"
-    />
-    <meta property="twitter:image" content={seoImageSrc} />
-    <meta name="twitter:site" content="@haderman7" />
+    <SEO />
     <title>{title}</title>
   </head>
   <body>
