@@ -143,6 +143,7 @@ body {
   min-height: 100%;
   color: var(--primary-text);
   background-color: var(--surface-1);
+  background-image: radial-gradient(circle, #051937, #00182e, #001623, #001219, #010c0e);
 }
 
 main {
@@ -155,7 +156,6 @@ section {
   padding: var(--fluid-6) var(--padding-left-right);
   gap: var(--fluid-4);
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -172,7 +172,7 @@ video {
 }
 
 h1 {
-  font-size: var(--fluid-5);
+  font-size: var(--fluid-4);
   text-align: center;
 }
 
@@ -182,6 +182,7 @@ p {
 
 h2 {
   font-size: var(--fluid-2);
+  text-align: center;
 }
 
 summary {
@@ -189,10 +190,14 @@ summary {
   font-weight: 500;
 }
 
-h1 + h2 {
-  font-size: var(--fluid-1);
-  font-weight: 400;
-  text-align: center;
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
 }
 
 .icon {
