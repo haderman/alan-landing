@@ -1,55 +1,107 @@
 ---
+import { Image } from "astro:assets";
 import Card from "./features/Card.astro";
 import spyOffSvg from "../assets/icons/spy-off.svg?raw";
 import messageSvg from "../assets/icons/message.svg?raw";
 import keySvg from "../assets/icons/key.svg?raw";
+import createAgentGif from "../assets/create-agent.gif";
 ---
 
 <section>
   <h2>What you get</h2>
-  <div>
-    <Card
-      title="Integrations"
-      description="Use your personal OpenAI API key, securely stored in your system keychain."
-      color="210"
-      icon={keySvg}
-    />
-    <Card
-      title="Privacy"
-      description="All data is only stored locally. Just keep in mind, it's also sent to OpenAI API."
-      color="260"
-      icon={spyOffSvg}
-    />
-    <Card
-      title="Custom Instructions"
-      description="Create several agents, each with their own custom instruction."
-      color="280"
-      icon={messageSvg}
-    />
+  <div class="bento-grid">
+    <article data-name="create-agent-card">
+      <Image src={createAgentGif} alt="Create agent" />
+      <div>
+        <h2>Create AI Chat Agents</h2>
+        <p>Create multiple AI chat agents, each with its system prompt</p>
+      </div>
+    </article>
+    <article data-name="api-key-card">
+      <div>
+        <h2>Integrations</h2>
+        <p>Use your personal OpenAI API key, securely stored in your system keychain.</p>
+      </div>
+    </article>
+    <article data-name="privacy-card">
+      <div>
+        <h2>Privacy</h2>
+        <p>All data is only stored locally. Just keep in mind, it's also sent to OpenAI API</p>
+      </div>
+    </article>
   </div>
 </section>
 
 <style lang="scss">
   section {
     flex-direction: column;
-    backdrop-filter: brightness(0.2) opacity(0.8);
+    background-color: hsl(210, 0%, 0%, 0.4);
+  }
+  .bento-grid {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: var(--fluid-1);
+    grid-template-areas:
+      "create-agent-card"
+      "api-key-card"
+      "privacy-card";
 
-    & > div {
-      display: flex;
-      align-items: stretch;
-      flex-wrap: wrap;
-      flex-grow: 1;
-      flex-shrink: 1;
-      gap: var(--fluid-3);
-      margin: auto;
-      max-width: 1280px;
+    @media screen and (min-width: 768px) {
+      grid-template-areas:
+        "create-agent-card api-key-card"
+        "create-agent-card privacy-card";
     }
 
-    & :global(.feature-card) {
-      flex-grow: 1;
-      flex-shrink: 1;
+    article {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      border-radius: var(--fluid-2);
+      background: hsl(0, 0%, 0%, 0.3);
+      box-shadow: var(--shadow-100);
+      border: 1px solid black;
+      padding: 0;
+
+      div {
+        padding: var(--fluid-2);
+      }
+    }
+
+    img {
       width: 100%;
-      flex-basis: 320px;
+      height: auto;
+    }
+
+    :where(h2, p) {
+      text-align: left;
+    }
+
+    h2 {
+      font-size: var(--fluid-2);
+      margin-bottom: var(--fluid-2);
+      color: hsl(210, 50%, 50%);
+    }
+
+    article[data-name="create-agent-card"] {
+      grid-area: create-agent-card;
+      background-color: black;
+    }
+
+    article[data-name="api-key-card"] {
+      grid-area: api-key-card;
+    }
+
+    article[data-name="privacy-card"] {
+      grid-area: privacy-card;
+    }
+
+    :hover {
+      img {
+
+      }
     }
   }
 </style>

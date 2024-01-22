@@ -98,7 +98,7 @@
   --surface-2: hsl(210deg 27% 7% / 50%);
   --surface-3: hsl(210deg 6% 10%);
 
-  --padding-left-right: var(--fluid--1);
+  --padding-left-right: var(--fluid-2);
   --primary-text: hsl(210, 10%, 70%);
   --header-height: 60px;
   --logo-size: 40px;
@@ -118,7 +118,6 @@
   color: inherit;
 }
 
-p,
 h1,
 h2,
 h3,
@@ -129,6 +128,11 @@ li,
 figcaption {
   max-inline-size: var(--measure);
   text-wrap: balance;
+}
+
+p {
+  max-inline-size: var(--measure);
+  text-wrap: pretty;
 }
 
 html {
@@ -154,7 +158,7 @@ main {
 section {
   position: relative;
   padding: var(--fluid-6) var(--padding-left-right);
-  gap: var(--fluid-4);
+  gap: var(--fluid-6);
   display: flex;
   align-items: center;
 }
