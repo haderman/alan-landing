@@ -20,12 +20,16 @@ import Video from "./hero/Video.astro";
     flex-wrap: wrap;
     height: 100%;
     flex-wrap: wrap;
-    padding: var(--fluid-8) var(--fluid-8);
+    padding: var(--fluid-8) var(--fluid-4);
+
+    @media screen and (min-width: 768px) {
+      padding: var(--fluid-8) var(--fluid-8);
+    }
 
     & > * {
       flex-grow: 1;
       flex-shrink: 1;
-      flex-basis: 400px;
+      flex-basis: 500px;
     }
 
     & .wrapper-hero-video {
