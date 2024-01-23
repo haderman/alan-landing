@@ -5,30 +5,42 @@ import Squircle from "./common/Squircle.astro";
 ---
 
 <header>
-  <div class="logo">
-    <Image src={logoSrc} alt="Alan logo" />
-    <span>Alan AI</span>
-  </div>
   <nav>
+    <div class="logo">
+      <Image src={logoSrc} alt="Alan logo" />
+      <span>Alan AI</span>
+    </div>
     <a href="https://marketplace.visualstudio.com/items/haderman.alanai/changelog" target="_blank">
       Changelog
     </a>
   </nav>
-  <div class="bien-glass"></div>
+  <div class="bien-glass">
+  </div>
+  <div class="bien-glass-edge" />
 </header>
 
 <style lang="scss">
   header {
-    padding: var(--fluid-1);
+    display: flex;
+    justify-content: center;
+
+    & > nav {
+      max-width: 1200px;
+      position: relative;
+      z-index: 1;
+    }
+    & > .bien-glass {
+      z-index: 0;
+    }
+  }
+
+  nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    backdrop-filter: brightness(0.5) opacity(0.5);
-
-    @media (min-width: 768px) {
-      justify-content: space-around;
-    }
+    padding: var(--fluid-1);
+    font-size: var(--fluid-0);
   }
 
   /**
