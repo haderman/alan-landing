@@ -23,20 +23,36 @@ import videoPoster from "../../assets/hero-video-poster.png?url";
       type="saturate"
       values="3"
       result="saturated-copy"></feColorMatrix>
-    <feColorMatrix
+    <!-- <feColorMatrix
       in="saturated-copy"
       type="matrix"
       values="1 0 0 0 0
-                  0 1 0 0 0
-                  0 0 1 0 0
-                  33 33 33 101 -132"
-      result="bright-colors"></feColorMatrix>
+              0 1 0 0 0
+              0 0 1 0 0
+              33 33 33 101 -132"
+      result="bright-colors"></feColorMatrix> -->
+    <!-- <feColorMatrix
+      in="SourceGraphic"
+      type="matrix"
+      values="0 0 0 0 0
+              0 0 0 0 0
+              0 0 1 0 0
+              0 0 0 1 0"
+      result="blue-channel"></feColorMatrix> -->
+    <feColorMatrix
+      in="SourceGraphic"
+      type="matrix"
+      values="0 0 0 0 0.019
+              0 0 0 0 0.098
+              0 0 0 0 0.215
+              0 0 0 1 0"
+      result="custom-dark-blue-gradient"></feColorMatrix>
     <feMorphology
       in="bright-colors"
       operator="dilate"
       radius="10"
       result="spread"></feMorphology>
-    <feGaussianBlur in="spread" stdDeviation="30" result="ambilight-light"
+    <feGaussianBlur in="spread" stdDeviation="100" result="ambilight-light"
     ></feGaussianBlur>
     <feOffset in="SourceGraphic" result="source"></feOffset>
     <feComposite in="source" in2="ambilight-light" operator="over"
@@ -46,6 +62,8 @@ import videoPoster from "../../assets/hero-video-poster.png?url";
 
 <style lang="scss">
   .wrapper-hero-video {
+    --reflect-distance: 0;
+
     position: relative;
     z-index: 1;
     flex-grow: 1;
@@ -54,11 +72,11 @@ import videoPoster from "../../assets/hero-video-poster.png?url";
     width: 100%;
     aspect-ratio: 16 / 10;
     border-radius: 15px;
-    overflow: hidden;
-    border: 2px solid hsl(210 20% 50% / 0.3);
-    background-color: hsl(210 20% 50% / 0.3);
+    // overflow: hidden;
+    // border: 2px solid hsl(210 20% 50% / 0.3);
+    // background-color: hsl(210 20% 50% / 0.3);
 
-    -webkit-box-reflect: below 10px linear-gradient(to bottom, lch(0 0 0 / 0) 80%, lch(0  0  0 / 0.1) 100%);
+    -webkit-box-reflect: below var(--reflect-distance) linear-gradient(to bottom, lch(0 0 0 / 0) 80%, lch(0  0  0 / 0.2) 100%);
 
     & video {
       z-index: 1;
