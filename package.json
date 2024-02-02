@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.0.4",
     "@dicebear/core": "^6.0.4",
     "@dicebear/identicon": "^6.0.4",
     "@fontsource-variable/montserrat": "^5.0.9",

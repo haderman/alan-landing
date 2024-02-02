@@ -1,13 +1,13 @@
 ---
 const { title } = Astro.props;
 const [lastWord, ...restOfTitle] = title.split(" ").reverse();
-const titleWithLastWord = [...restOfTitle].reverse().join(" ") + " ";
+const titleWithoutLastWord = [...restOfTitle].reverse().join(" ") + " ";
 ---
 
 <details>
-  <summary>
+  <summary title={title}>
     <span>
-      {titleWithLastWord}
+      {titleWithoutLastWord}
       <span class="text-gradient-2">{lastWord}</span>
     </span>
   </summary>

@@ -10,8 +10,6 @@ interface Props {
   title: string;
 }
 
-const GTM_ID = "GTM-TGWHF92Q";
-
 const { title } = Astro.props;
 
 const seoImageSrc =
@@ -27,32 +25,39 @@ const seoImageSrc =
   </head>
   <body>
     <Background />
-    <noscript>
-      <iframe
-        src={"https://www.googletagmanager.com/ns.html?id=" + GTM_ID}
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"
-      >
-      </iframe>
-    </noscript>
     <slot />
   </body>
 </html>
 
-<script
-  type="text/partytown"
-  async
-  src={"https://www.googletagmanager.com/gtag/js?id=" + GTM_ID}
-></script>
+<script>
+  import { logger } from '../lib/logger';
 
-<script type="text/partytown">
-  window.dataLayer = window.dataLayer || [];
+  document.addEventListener('DOMContentLoaded', configLogger);
 
-  function gtag() {
-    dataLayer.push(arguments);
+  function configLogger() {
+    logger({
+      type: 'pageview',
+      href: 'home',
+    });
+
+    document.body.addEventListener('click', (e) => {
+      const $target = (e.target as HTMLElement);
+      const $a = $target.closest('a');
+      const $summary = $target.closest('summary');
+      const parentSection = $target.closest?.('section');
+      const parentHeader = $target?.closest?.('header');
+      const parentFooter = $target?.closest?.('footer');
+
+      logger({
+        type: 'click',
+        content: $a ? $a.getAttribute('href')
+          : $summary ? $summary.getAttribute('title')
+          : undefined,
+        section: parentSection ? parentSection.getAttribute('data-name')
+          : parentHeader ? 'header'
+          : parentFooter ? 'header'
+          : undefined
+      });
+    });
   }
-
-  gtag("js", new Date());
-  gtag("config", GTM_ID);
 </script>
