@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.0.0",
+    "@astrojs/partytown": "^2.0.4",
     "@dicebear/core": "^6.0.4",
     "@dicebear/identicon": "^6.0.4",
     "@fontsource-variable/montserrat": "^5.0.9",
     "@resvg/resvg-js": "^2.4.1",
-    "astro": "^3.0.10",
+    "astro": "^4.3.1",
     "exiftool-vendored": "^16.5.1",
     "nanoid": "^4.0.2",
     "sharp": "^0.32.5"
