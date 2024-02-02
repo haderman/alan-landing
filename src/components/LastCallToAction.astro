@@ -1,15 +1,14 @@
 ---
 import CTA from "./common/CTA.astro";
+import List from './hero/ListOfFeatures.astro';
 ---
 
 <section data-name="last-cta" class="last-cta">
   <article>
     <h1 class="headline text-gradient">
-      Try Alan AI for free
+      Try Alan AI Chat Today
     </h1>
-    <p>
-      Tap into the power of AI right inside your Visual Studio Code, today.
-    </p>
+    <List />
     <CTA />
   </article>
 </section>
@@ -32,14 +31,14 @@ import CTA from "./common/CTA.astro";
     flex-shrink: 1;
     flex-grow: 1;
     margin: auto;
+    gap: var(--fluid-4);
+
     & > h1 {
-      margin-bottom: 0.9rem;
       font-size: clamp(1.5rem, 6vw, 3rem);
       text-align: center;
       max-width: 25ch;
     }
     & > p {
-      margin-bottom: 2.6rem;
       font-size: 1.2rem;
       font-weight: 500;
       text-align: center;
