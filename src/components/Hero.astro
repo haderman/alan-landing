@@ -11,7 +11,9 @@ import Video from './hero/Video.astro';
     <h2>Set up multiple AI chats. Each one has its own system prompt.</h2>
     <CTA />
   </article>
-  <Video />
+  <div>
+    <Video />
+  </div>
 </section>
 
 <style is:global lang="scss">
@@ -39,14 +41,19 @@ import Video from './hero/Video.astro';
     }
   }
   .hero > article {
+    opacity: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation-duration: 3s;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
 
     & > h1 {
       margin-bottom: var(--fluid-1);
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      font-size: var(--fluid-5);
       // text-align: left;
     }
     & > h2 {
@@ -56,5 +63,46 @@ import Video from './hero/Video.astro';
       font-weight: 400;
       // text-align: left;
     }
+  }
+
+  .hero > div {
+    opacity: 0;
+    animation-duration: 1s;
+    animation-name: fadeInUp;
+    animation-delay: 500ms;
+    animation-fill-mode: forwards;
+
+    @media screen and (min-width: 1236px) {
+      animation-name: fadeIn;
+      animation-duration: 3s;
+      animation-delay: 0ms;
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    80% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .fade-in-up-animation {
+    animation: 2s fadeInUp;
   }
 </style>

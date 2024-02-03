@@ -10,7 +10,7 @@
   --fluid-min-size: 10;
   --fluid-max-size: 14;
   --fluid-min-ratio: 1.2;
-  --fluid-max-ratio: 1.33;
+  --fluid-max-ratio: 1.25;
 
   --fluid-screen: 100vw;
   --fluid-bp: calc((var(--fluid-screen) - ((var(--fluid-min-width) / 16) * 1rem)) / ((var(--fluid-max-width) / 16) - (var(--fluid-min-width) / 16)));
@@ -177,7 +177,7 @@ video {
 }
 
 h1 {
-  font-size: var(--fluid-4);
+  font-size: var(--fluid-5);
   text-align: center;
 }
 
@@ -196,7 +196,7 @@ a {
 }
 
 h2 {
-  font-size: var(--fluid-2);
+  font-size: var(--fluid-3);
   text-align: center;
 }
 
