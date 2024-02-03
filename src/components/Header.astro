@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import logoSrc from "../assets/alan-with-background.png";
-import Squircle from "./common/Squircle.astro";
 ---
 
 <header>
@@ -54,6 +53,7 @@ import Squircle from "./common/Squircle.astro";
   }
 
   #link-v2 {
+    overflow: hidden;
     position: relative;
     padding: var(--fluid-0);
 
@@ -79,7 +79,7 @@ import Squircle from "./common/Squircle.astro";
     border: 2px solid transparent;
     mask:
       linear-gradient(transparent, transparent),
-      linear-gradient(white, white);
+      linear-gradient(lch(50 50 210), lch(50 50 210));
     mask-clip: padding-box, border-box;
     mask-composite: intersect;
     background-color: lch(20 40 290 / 1);
@@ -91,7 +91,9 @@ import Squircle from "./common/Squircle.astro";
       transform: scale(3);
       border-radius: inherit;
       offset-path: rect(0 auto auto 0 round 1000px);
-      animation: loop 2.6s infinite linear;
+      animation: loop 8s infinite linear;
+      animation-delay: 2s;
+      
       background:
         radial-gradient(
           circle at right,
@@ -103,14 +105,17 @@ import Squircle from "./common/Squircle.astro";
 
 
   @keyframes loop {
-    to {
+    0% {
+      offset-distance: 0%;
+    }
+    20% {
       offset-distance: 100%;
     }
-  }
-
-  @keyframes loop {
-    to {
-      offset-distance: 100%;
+    50% {
+      offset-distance: 0%;
+    }
+    100% {
+      offset-distance: 0%;
     }
   }
 
