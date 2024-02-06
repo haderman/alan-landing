@@ -10,10 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^7.1.1",
     "@dicebear/core": "^6.0.4",
     "@dicebear/identicon": "^6.0.4",
     "@fontsource-variable/montserrat": "^5.0.9",
+    "@getbrevo/brevo": "^2.0.0-beta.4",
     "@resvg/resvg-js": "^2.4.1",
+    "@supabase/supabase-js": "^2.39.3",
     "astro": "^4.3.1",
     "exiftool-vendored": "^16.5.1",
     "nanoid": "^4.0.2",

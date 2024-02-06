@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import logoSrc from "../assets/alan-with-background.png";
-import Squircle from "./common/Squircle.astro";
 ---
 
 <header>
@@ -12,6 +11,10 @@ import Squircle from "./common/Squircle.astro";
     </div>
     <a href="https://marketplace.visualstudio.com/items/haderman.alanai/changelog" target="_blank">
       Changelog
+    </a>
+    <a id="link-v2" href="/v2">
+      <span>Subscribe to V2</span>
+      <div class="glow"></div>
     </a>
   </nav>
   <div class="bien-glass">
@@ -36,12 +39,87 @@ import Squircle from "./common/Squircle.astro";
   }
 
   nav {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    gap: var(--fluid-3);
     padding: var(--fluid-1);
     font-size: var(--fluid-0);
+
+    & > div:first-child {
+      margin-right: auto;
+    }
+  }
+
+  #link-v2 {
+    /** Remove when v2 is ready */
+    display: none;
+
+    overflow: hidden;
+    position: relative;
+    padding: var(--fluid-0);
+
+    & > span {
+      z-index: 1;
+      border-radius: 1000px
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 1px solid lch(50 50 210 / 1);
+      outline-offset: 6px;
+    }
+  }
+
+  .glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 1000px;
+    border: 2px solid transparent;
+    mask:
+      linear-gradient(transparent, transparent),
+      linear-gradient(lch(50 50 210), lch(50 50 210));
+    mask-clip: padding-box, border-box;
+    mask-composite: intersect;
+    background-color: lch(20 40 290 / 1);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      transform: scale(3);
+      border-radius: inherit;
+      offset-path: rect(0 auto auto 0 round 1000px);
+      animation: loop 8s infinite linear;
+      animation-delay: 2s;
+
+      background:
+        radial-gradient(
+          circle at right,
+          hsl(320 90% 100%),
+          transparent 50%
+        );
+    }
+  }
+
+
+  @keyframes loop {
+    0% {
+      offset-distance: 0%;
+    }
+    20% {
+      offset-distance: 100%;
+    }
+    50% {
+      offset-distance: 0%;
+    }
+    100% {
+      offset-distance: 0%;
+    }
   }
 
   /**
