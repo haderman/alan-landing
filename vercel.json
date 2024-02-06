@@ -1,6 +1,6 @@
 {
   "functions": {
-    "src/pages/api/subscription.ts": {
+    "src/pages/**/*": {
       "memory": 1024,
       "maxDuration": 10
     }
