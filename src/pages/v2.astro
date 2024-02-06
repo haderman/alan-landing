@@ -1,21 +1,113 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Welcome to Alan Chat.">
   <main>
-    <h1>Hola</h1>
+    <section>
+      <article>
+        <h1>
+          The AI Chat assistant that you control
+        </h1>
+        <p>
+          Set up multiple AI chats. Each one has its own system prompt.
+        </p>
+        <form action="/api/subscription" method="post">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <button type="submit">
+            Send
+          </button>
+        </form>
+      </article>
+    </section>
+    <section>
+
+    </section>
   </main>
 </Layout>
 
-<style is:global>
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
+<style>
   main {
-    position: relative;
-    z-index: 0;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  section:first-child {
+    background-image: radial-gradient(100% 50% at 50% 0%, rgba(0, 163, 255, 0.13) 0%, rgba(0, 163, 255, 0) 50%, rgba(0, 163, 255, 0) 100%)
+  }
+
+  section:last-child {
+    background-color: lch(0 0 0);
+  }
+
+  article {
+    padding: var(--fluid-4);
+    background-color: var(--surface-2);
+    border-radius: var(--fluid-0);
+    box-shadow: 0 var(--fluid--1) var(--fluid-1) rgba(0, 0, 0, 0.2);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fluid-0);
+    background-color: var(--surface-2);
+    padding: var(--fluid-2);
+    border-radius: var(--fluid--1);
+    box-shadow: 0 var(--fluid--1) var(--fluid-1) rgba(0, 0, 0, 0.1);
+  }
+
+  form label {
+    font-size: var(--fluid-1);
+    color: var(--primary-text);
+  }
+
+  form input {
+    padding: var(--fluid--2);
+    font-size: var(--fluid-1);
+    border: 2px solid var(--surface-3);
+    border-radius: var(--fluid--3);
+    background-color: transparent;
+    color: var(--primary-text);
+  }
+
+  form button {
+    padding: var(--fluid--2) var(--fluid--1);
+    font-size: var(--fluid-1);
+    background-color: rgb(var(--accent));
+    color: white;
+    border: none;
+    border-radius: var(--fluid--3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  form button:hover {
+    background-color: rgb(var(--accent-dark));
+  }
+
+  h1 {
+    font-size: var(--fluid-5);
+    color: var(--primary-text);
+    margin-bottom: var(--fluid-1);
+  }
+
+  p {
+    font-size: var(--fluid-2);
+    color: var(--primary-text);
+    line-height: var(--fluid-0);
   }
 </style>
+
+<script>
+  console.log('hello world');
+</script>
