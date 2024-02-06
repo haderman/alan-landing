@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 
 import { supabase } from '../../lib/supabase';
+import { sendWelcomeMessage } from '../../lib/brevo';
 
 export const POST:APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData();
@@ -9,7 +10,14 @@ export const POST:APIRoute = async ({ request, redirect }) => {
   try {
     await subscribeEmail(email);
   } catch (error) {
-    console.error('error subscribing email');
+    console.error('error subscribing email: ', error);
+  }
+
+  try {
+    await sendWelcomeMessage(email);
+    console.log('sended!')
+  } catch (error) {
+    console.error('error sending welcome message: ', error);
   }
 
   return redirect('/thank-you');
