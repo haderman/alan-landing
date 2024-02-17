@@ -6,9 +6,9 @@ const isProd = import.meta.env.PROD;
 const isDev = import.meta.env.DEV;
 
 // This could be env variables in the future?
-const DATASET_NAME = 'alan-landing';
+const DATASET_NAME = 'websites';
 const ENDPOINT = `https://api.axiom.co/v1/datasets/${DATASET_NAME}/ingest`;
-const TOKEN = 'xaat-3ae3ab60-5254-40bb-8a7a-7f8afd6e544b';
+const TOKEN = 'xaat-ec1bff92-3e26-4fec-87c6-79971f56a8e2';
 
 function generateUniqueId() {
   return `usr_${nanoid(22)}`;
@@ -41,6 +41,7 @@ export function logger(data) {
       userId,
     },
     data,
+    site: document.location.href,
   }];
 
   if (isProd) {
