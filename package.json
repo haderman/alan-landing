@@ -18,6 +18,7 @@
     "@resvg/resvg-js": "^2.4.1",
     "@supabase/supabase-js": "^2.39.3",
     "@vercel/analytics": "^1.2.0",
+    "@vercel/edge": "^1.1.1",
     "astro": "^4.3.1",
     "exiftool-vendored": "^16.5.1",
     "nanoid": "^4.0.2",

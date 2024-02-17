@@ -1,22 +1,25 @@
 import type { APIRoute } from 'astro';
+import { geolocation } from '@vercel/edge';
 
 const DATASET_NAME = 'websites';
 const ENDPOINT = `https://api.axiom.co/v1/datasets/${DATASET_NAME}/ingest`;
 const TOKEN = 'xaat-ec1bff92-3e26-4fec-87c6-79971f56a8e2';
 
 export const POST: APIRoute = async ({ request }) => {
-  const ip = request.headers.get('x-real-ip');
-  const { body } = await request.json();
-  const bodyWithIp = {
-    ...body,
-    attributes: {
-      ...body.attributes,
-      ip,
-    },
-  };
-
   try {
-    await logToAxiom(bodyWithIp, ip);
+    const { country, city } = geolocation(request);
+
+    const bodyRaw = await extractBody(request)
+    const body = JSON.parse(bodyRaw);
+
+    const bodyWithGeolocation = {
+      ...body,
+      geolocation: {
+        city,
+        country,
+      },
+    };
+    await logToAxiom(bodyWithGeolocation);
   } catch (error) {
     console.error('Error logging to Axiom:', error);
   }
@@ -26,7 +29,7 @@ export const POST: APIRoute = async ({ request }) => {
   });
 }
 
-function logToAxiom(body: any, ip: string) {
+function logToAxiom(body: any) {
   return fetch(ENDPOINT, {
     method: 'POST',
     headers: {
@@ -35,4 +38,17 @@ function logToAxiom(body: any, ip: string) {
     },
     body: JSON.stringify(body),
   });
+}
+
+async function extractBody(request) {
+  const dec = new TextDecoder();
+  const reader = request.body.getReader();
+  let body = ""
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) return body;
+
+    body = body + dec.decode(value)
+  }
 }
