@@ -5,10 +5,7 @@ export const nanoid = customAlphabet('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghi
 const isProd = import.meta.env.PROD;
 const isDev = import.meta.env.DEV;
 
-// This could be env variables in the future?
-const DATASET_NAME = 'websites';
-const ENDPOINT = `https://api.axiom.co/v1/datasets/${DATASET_NAME}/ingest`;
-const TOKEN = 'xaat-ec1bff92-3e26-4fec-87c6-79971f56a8e2';
+const ENDPONT = new URL('/api/logger', document.location.href);
 
 function generateUniqueId() {
   return `usr_${nanoid(22)}`;
@@ -45,11 +42,10 @@ export function logger(data) {
   }];
 
   if (isProd) {
-    fetch(ENDPOINT, {
+    fetch(ENDPONT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${TOKEN}`,
       },
       body: JSON.stringify(enrichedData),
     }).then((response) => {
