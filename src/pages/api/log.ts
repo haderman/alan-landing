@@ -20,13 +20,11 @@ export const POST: APIRoute = async ({ request }) => {
       },
     };
     await logToAxiom(bodyWithGeolocation);
+    return new Response('Logger received', { status: 200 });
   } catch (error) {
     console.error('Error logging to Axiom:', error);
+    return new Response('Error logging to Axiom', { status: 500 });
   }
-
-  return new Response('Logger received', {
-    status: 200,
-  });
 }
 
 function logToAxiom(body: any) {
