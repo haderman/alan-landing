@@ -11,14 +11,15 @@ export const POST: APIRoute = async ({ request }) => {
 
     const bodyRaw = await extractBody(request)
     const body = JSON.parse(bodyRaw);
+    const item = body[0];
 
-    const bodyWithGeolocation = {
-      ...body,
+    const bodyWithGeolocation = [{
+      ...item,
       geolocation: {
         city,
         country,
       },
-    };
+    }];
     await logToAxiom(bodyWithGeolocation);
     return new Response('Logger received', { status: 200 });
   } catch (error) {
