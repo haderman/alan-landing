@@ -9,7 +9,10 @@ export default defineConfig({
   adapter: vercel({
     webAnalytics: {
       enabled: true
-    }
+    },
+    imageService: {
+      enabled: true
+    },
   }),
   site: 'https://www.alanai.app/',
   integrations: [icon()]
