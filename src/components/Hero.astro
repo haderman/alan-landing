@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import CTA from './common/CTA.astro';
 import ListOfFeatures from './common/ListOfFeatures.astro';
-import Video from './hero/Video.astro';
 import gitanaSrc from '../assets/screenshots/gitana.webp';
 import diagramSrc from '../assets/screenshots/vision-diagram.webp';
 ---
@@ -16,16 +15,18 @@ import diagramSrc from '../assets/screenshots/vision-diagram.webp';
     <CTA />
   </article>
   <div class="images-wrapper">
-    <!-- <Video /> -->
-    <Image src={gitanaSrc} alt="Gitana" />
-    <Image src={diagramSrc} alt="Vision Diagram" />
+    <div>
+      <Image src={gitanaSrc} alt="Gitana" />
+    </div>
+    <div>
+      <Image src={diagramSrc} alt="Vision Diagram" />
+    </div>
   </div>
 </section>
 
 <style is:global lang="scss">
   .hero {
     min-height: 80vh;
-    // background-color: rgba(0,0,0,.4);
     gap: var(--fluid-8);
     flex-wrap: wrap;
     height: 100%;
@@ -96,9 +97,18 @@ import diagramSrc from '../assets/screenshots/vision-diagram.webp';
     align-items: center;
     flex-wrap: nowrap;
 
-    & > img {
+    & > div {
+      display: flex;
       height: auto;
       width: 45%;
+      padding: var(--fluid--3);
+      backdrop-filter: blur(20px);
+      background-color: hsla(0, 0%, 100%, 0.051);
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
     }
   }
 

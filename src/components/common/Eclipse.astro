@@ -8,7 +8,12 @@ import bgSvg from '../../assets/backgrounds/grid.svg?raw';
 
 <style is:global>
   .eclipse {
-    --color: hsla(199, 98%, 48%, 0.5);
+    --color: hsla(199, 98%, 48%, 1);
+
+    @media screen and (min-width: 720px){
+      --color: hsla(199, 98%, 48%, 0.5);
+    }
+
     pointer-events: none;
     user-select: none;
     position: relative;

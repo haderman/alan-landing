@@ -13,22 +13,19 @@ import logoSrc from "../assets/alan-with-background.png";
       Changelog
     </a>
   </nav>
-  <div class="bien-glass">
-  </div>
-  <div class="bien-glass-edge" />
 </header>
 
 <style lang="scss">
   header {
     display: flex;
     justify-content: center;
-    // background-color: rgba(0,0,0,.4);
 
     & > nav {
       max-width: 1200px;
       position: relative;
       z-index: 1;
     }
+
     & > .bien-glass {
       z-index: 0;
     }
@@ -40,110 +37,11 @@ import logoSrc from "../assets/alan-with-background.png";
     justify-content: space-between;
     align-items: center;
     gap: var(--fluid-3);
-    padding: var(--fluid--2);
+    padding: var(--fluid-0);
     font-size: var(--fluid-0);
 
     & > div:first-child {
       margin-right: auto;
-    }
-  }
-
-  /**
-   * source: https://x.com/artur_bien/status/1707845116176519313?s=20
-   */
-  .bien-glass {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-
-    /*   Extend the backdrop to the bottom for it to "collect the light" outside of the nav */
-    --extended-by: 100px;
-    bottom: calc(-1 * var(--extended-by));
-
-    --filter: blur(30px);
-    -webkit-backdrop-filter: var(--filter);
-    backdrop-filter: var(--filter);
-
-    /*   Cut the part of the backdrop that falls outside of <nav /> */
-    --cutoff: calc(100% - var(--extended-by));
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      black 0,
-      black var(--cutoff),
-      transparent var(--cutoff)
-    );
-  }
-
-  .bien-glass-edge {
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    border-radius: inherit;
-
-    --extended-by: 80px;
-    --offset: 20px;
-    --thickness: 2px;
-    height: calc(var(--extended-by) + var(--offset));
-    /*   Offset is used to snuck the border backdrop slightly under the main backdrop for  smoother effect */
-    top: calc(100% - var(--offset) + var(--thickness));
-    width: calc(100% + calc(var(--thickness) * 2));
-    left: calc(var(--thickness) * -1);
-    /* Make the blur bigger so that the light bleed effect spreads wider than blur on the first backdrop */
-    /* Increase saturation and brightness to fake smooth chamfered edge reflections */
-    --filter: blur(40px) saturate(160%) brightness(1.3);
-    -webkit-backdrop-filter: var(--filter);
-    backdrop-filter: var(--filter);
-    pointer-events: none;
-
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      black 0,
-      black var(--offset),
-      transparent var(--offset)
-    );
-
-    &[data-place="top"] {
-      top: auto;
-      bottom: calc(100% - var(--offset) + var(--thickness));
-      -webkit-mask-image: linear-gradient(
-        to top,
-        black 0,
-        black var(--offset),
-        transparent var(--offset)
-      );
-    }
-
-    &[data-place="left"] {
-      --left: calc(var(--extended-by) + var(--thickness));
-      top: 0;
-      left: calc(var(--left) * -1);
-      right: unset;
-      bottom: 0;
-      width: calc(var(--extended-by) + var(--offset));
-      height: auto;
-      -webkit-mask-image: linear-gradient(
-        to left,
-        black 0,
-        black var(--offset),
-        transparent var(--offset)
-      );
-    }
-
-    &[data-place="right"] {
-      top: 0;
-      bottom: 0;
-      left: calc(100% - var(--offset) + var(--thickness));
-      width: calc(var(--extended-by) + var(--offset));
-      height: auto;
-      -webkit-mask-image: linear-gradient(
-        to right,
-        black 0,
-        black var(--offset),
-        transparent var(--offset)
-      );
     }
   }
 
