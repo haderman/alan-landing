@@ -1,27 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ListOfFeatures from '../componentsV2/common/ListOfFeatures.astro';
 ---
 
 <Layout title="Welcome to Alan Chat.">
   <main>
     <section>
-    </section>
-    <section>
       <article>
         <h1>
-          The AI Chat assistant that you control
+          Boost your productivity with the best AI chat
         </h1>
         <p>
           Set up multiple AI chats. Each one has its own system prompt.
         </p>
+        <ListOfFeatures />
         <form action="/api/subscription" method="post">
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <input
+            required
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your email address"
+          />
           <button type="submit">
             Send
           </button>
         </form>
       </article>
+    </section>
+    <section>
     </section>
   </main>
   <footer>
@@ -44,14 +52,17 @@ import Layout from '../layouts/Layout.astro';
   }
 
   section:first-child {
-    background-image: radial-gradient(100% 50% at 50% 0%, rgba(0, 163, 255, 0.13) 0%, rgba(0, 163, 255, 0) 50%, rgba(0, 163, 255, 0) 100%)
-  }
-
-  section:last-child {
     background-color: lch(0 0 0);
   }
 
+  section:last-child {
+    background-image: radial-gradient(100% 50% at 50% 0%, rgba(0, 163, 255, 0.13) 0%, rgba(0, 163, 255, 0) 50%, rgba(0, 163, 255, 0) 100%)
+  }
+
   article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fluid-2);
     padding: var(--fluid-4);
     background-color: var(--surface-2);
     border-radius: var(--fluid-0);
@@ -62,10 +73,7 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     gap: var(--fluid-0);
-    background-color: var(--surface-2);
     padding: var(--fluid-2);
-    border-radius: var(--fluid--1);
-    box-shadow: 0 var(--fluid--1) var(--fluid-1) rgba(0, 0, 0, 0.1);
   }
 
   form label {
@@ -80,6 +88,11 @@ import Layout from '../layouts/Layout.astro';
     border-radius: var(--fluid--3);
     background-color: transparent;
     color: var(--primary-text);
+    flex: 1;
+
+    &::placeholder {
+      color: var(--secondary-text);
+    }
   }
 
   form button {
@@ -100,7 +113,7 @@ import Layout from '../layouts/Layout.astro';
   h1 {
     font-size: var(--fluid-5);
     color: var(--primary-text);
-    margin-bottom: var(--fluid-1);
+    text-align: left;
   }
 
   p {

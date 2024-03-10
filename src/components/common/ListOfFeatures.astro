@@ -1,0 +1,67 @@
+---
+import circleCheckSvg from '../../assets/icons/circle-check.svg?raw';
+import { Icon } from 'astro-icon/components';
+import { ICON_NAMES } from '../../constants/icon-names.js';
+
+const FEATURES = [
+  {
+    icon: ICON_NAMES.chat,
+    text: 'Customize each agent with instructions and temperature.',
+  },
+  {
+    icon: ICON_NAMES.chat,
+    text: 'Edit or Retry messages to save time and avoid rework.',
+  },
+  {
+    icon: ICON_NAMES.chat,
+    text: 'Reference any file in the conversation or in the agent instructions.',
+  },
+  {
+    icon: ICON_NAMES.chat,
+    text: 'Upload multiple images at once to ask questions.',
+  },
+  {
+    icon: ICON_NAMES.chat,
+    text: 'Ask questions, run commands, and get answers in the same chat.',
+  },
+];
+
+---
+
+<div>
+  <ul>
+    {FEATURES.map(({ icon, text }) => (
+      <li>
+        <Fragment set:html={circleCheckSvg} />
+        <span>{text}</span>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  div {
+    display: flex;
+  }
+
+  ul {
+    --pad-left: 2rem;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: var(--pad-left);
+
+    li {
+      position: relative;
+      margin-bottom: 0.5em;
+      font-weight: 500;
+      line-height: 1.5;
+      font-size: var(--fluid-1);
+    }
+
+    svg {
+      position: absolute;
+      left: calc(var(--pad-left) * -1);
+      top: 0px;
+    }
+  }
+</style>

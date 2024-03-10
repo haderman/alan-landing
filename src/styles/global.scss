@@ -124,19 +124,18 @@ h3,
 h4,
 h5,
 h6,
-li,
 figcaption {
-  max-inline-size: var(--measure);
   text-wrap: balance;
 }
 
-p {
-  max-inline-size: var(--measure);
+li, p {
   text-wrap: pretty;
+  font-size: inherit;
 }
 
 html {
-  font-family: "Montserrat Variable", system-ui, sans-serif;
+  // font-family: "Montserrat Variable", system-ui, sans-serif;
+  font-family: -apple-system,"system-ui","Segoe UI",sans-serif;
   background: black;
   height: 100%;
 }
@@ -148,7 +147,7 @@ body {
   color: var(--primary-text);
   background-color: var(--surface-1);
   font-size: var(--fluid-1);
-  background-image: radial-gradient(circle, #051937, #00182e, #001623, #001219, #010c0e);
+  // background-image: radial-gradient(circle, #051937, #00182e, #001623, #001219, #010c0e);
 }
 
 main {
@@ -159,7 +158,7 @@ main {
 section {
   position: relative;
   padding: var(--fluid-6) var(--padding-left-right);
-  gap: var(--fluid-6);
+  gap: var(--fluid-8);
   display: flex;
   align-items: center;
 }
@@ -174,11 +173,6 @@ video {
   height: 100%;
   border-radius: 16px;
   box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.5);
-}
-
-h1 {
-  font-size: var(--fluid-5);
-  text-align: center;
 }
 
 p {
