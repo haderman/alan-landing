@@ -1,0 +1,165 @@
+---
+
+---
+
+<section data-name="price">
+  <div class="background">
+    <div class="light"></div>
+  </div>
+  <h2>Pricing</h2>
+  <article class="price-card">
+    <header>
+      <h2 class="price-title">Free</h2>
+      <p class="price-description">
+        Everything you need to supercharge your productivity.
+      </p>
+      <span class="price-tag">
+        <strong>$0</strong>/ month
+      </span>
+    </header>
+    <div class="divider"></div>
+    <div class="price-features">
+      <span>What is included</span>
+      <ul class="price-features">
+        <li>Create unlimited AI chat agents</li>
+        <li>Edit unlimited messages</li>
+        <li>Access to all future updates</li>
+      </ul>
+    </div>
+    <a
+      target="_blank"
+      href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai"
+      class="cta-button"
+    >
+      Get Started
+    </a>
+  </article>
+</section>
+
+<style>
+  section {
+    flex-direction: column;
+    padding: var(--fluid-7) var(--fluid-3);
+    background: linear-gradient(145deg, var(--surface-1), var(--surface-2));
+    opacity: 0.8;
+    background-image: radial-gradient(oklab(0.35 -0.05 -0.09) .5px, black 0);
+  }
+
+  .price-card {
+    backdrop-filter: brightness(0.5);
+    max-width: 380px;
+    background: linear-gradient(145deg, var(--surface-1), var(--surface-2));
+    border-radius: var(--fluid-2);
+    padding: var(--fluid-6) var(--fluid-3);
+    color: var(--primary-text);
+    display: flex;
+    flex-direction: column;
+    gap: var(--fluid-3);
+    border: 1px solid 0.5px solid lab(23 0 0 / 0.67);
+
+    h2 {
+      text-align: left;
+      font-size: var(--fluid-4);
+      color: var(--primary-text);
+      margin-bottom: var(--fluid-2);
+    }
+  }
+
+  .price-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--fluid--3);
+    font-size: var(--fluid-0);
+    color: oklab(60% 0 0);
+
+    strong {
+      color: var(--primary-text);
+      font-size: var(--fluid-6);
+    }
+  }
+
+  .price-features {
+    color: oklab(70% 0 0);
+
+    span {
+      font-size: var(--fluid-0);
+      color: oklab(70% 0 0);
+      display: block;
+      margin-bottom: var(--fluid-2);
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--primary-text);
+    opacity: 0.1;
+  }
+
+  .price-description {
+    font-size: var(--fluid-1);
+    margin-bottom: var(--fluid-2);
+    color: var(--primary-text);
+  }
+
+  .price-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--fluid-2);
+  }
+
+  .price-features li {
+    font-size: var(--fluid-1);
+    align-items: center;
+    display: flex;
+    margin-bottom: var(--fluid--1);
+
+    &::before {
+      content: "✓";
+      color: hsl(var(--accent));
+      margin-right: var(--fluid--2);
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .cta-button {
+    text-align: center;
+    font-size: var(--fluid-1);
+    padding: var(--fluid--1) var(--fluid-1);
+    border: none;
+    border-radius: var(--fluid--2);
+    background: linear-gradient(180deg, lab(35 -24.75 -21.51), lab(8 34.72 -48.03));
+    color: var(--primary-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .light {
+      background-image: radial-gradient(40% 50% at 50% 50%,rgba(3,169,244,.27),hsla(0,0%,100%,0));
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+    }
+
+    & > svg {
+      stroke: hsla(0, 0%, 100%, .05);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      mask-image: radial-gradient(75% 50% at top center, #fff, transparent);
+    }
+  }
+</style>
