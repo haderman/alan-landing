@@ -5,11 +5,11 @@ import brandVscodeSVG from "../../assets/brand-vscode.svg?raw";
 <a
   target="_blank"
   href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai"
+  class="cta-button"
 >
   <Fragment set:html={brandVscodeSVG} />
   <span>Install</span>
   <span class="objection"> - it's free</span>
-  <div class="glow"></div>
 </a>
 
 <style lang="scss">
@@ -35,60 +35,34 @@ import brandVscodeSVG from "../../assets/brand-vscode.svg?raw";
 
     &:focus-visible {
       outline: 1px solid lch(50 50 210 / 1);
-      outline-offset: 6px;
+      outline-offset: 4px;
     }
   }
+
+  .cta-button {
+    text-align: center;
+    font-size: var(--fluid-1);
+    padding: var(--fluid--1) var(--fluid-1);
+    border-radius: var(--fluid--2);
+    background: linear-gradient(180deg, lab(35 -24.75 -21.51), lab(8 34.72 -48.03));
+    color: var(--primary-text);
+    cursor: pointer;
+    background:
+      linear-gradient(180deg, oklch(0.43 0.1 215.22), oklch(0.23 0.14 285.15)) padding-box,
+      linear-gradient(180deg, oklch(0.63 0.1 215.22), oklch(0.43 0.14 285.15)) border-box;
+    border: 1px solid transparent;
+
+    &:hover {
+      box-shadow: 0px 0px 8px 0px oklch(0.67 0.17 213.3);
+    }
+    transition: all 0.3s ease;
+  }
+
   .objection {
     font-size: 0.8em;
     color: hsl(261.6deg 51.87% 95.25%);
     opacity: 0.5;
     text-shadow: 1px 1px lch(0 0 0 / 1);
     font-style: italic;
-  }
-
-  .glow {
-    position: absolute;
-    inset: 0;
-    border-radius: 1000px;
-    border: 2px solid transparent;
-    mask:
-      linear-gradient(transparent, transparent),
-      linear-gradient(lch(50 50 210), lch(50 50 210));
-    mask-clip: padding-box, border-box;
-    mask-composite: intersect;
-    background-color: lch(20 40 290 / 1);
-
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 2px;
-      transform: scale(3);
-      border-radius: inherit;
-      offset-path: rect(0 auto auto 0 round 1000px);
-      animation: loop 8s infinite linear;
-      animation-delay: 2s;
-
-      background:
-        radial-gradient(
-          circle at right,
-          hsl(320 90% 100%),
-          transparent 50%
-        );
-    }
-  }
-
-  @keyframes loop {
-    0% {
-      offset-distance: 0%;
-    }
-    20% {
-      offset-distance: 100%;
-    }
-    50% {
-      offset-distance: 0%;
-    }
-    100% {
-      offset-distance: 0%;
-    }
   }
 </style>

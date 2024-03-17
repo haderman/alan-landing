@@ -3,37 +3,42 @@
 ---
 
 <section data-name="price">
-  <div class="background">
+  <!-- <div class="background">
     <div class="light"></div>
-  </div>
+  </div> -->
   <h2>Pricing</h2>
-  <article class="price-card">
-    <header>
-      <h2 class="price-title">Free</h2>
-      <p class="price-description">
-        Everything you need to supercharge your productivity.
-      </p>
-      <span class="price-tag">
-        <strong>$0</strong>/ month
-      </span>
-    </header>
-    <div class="divider"></div>
-    <div class="price-features">
-      <span>What is included</span>
-      <ul class="price-features">
-        <li>Create unlimited AI chat agents</li>
-        <li>Edit unlimited messages</li>
-        <li>Access to all future updates</li>
-      </ul>
+  <div class="card-container">
+    <div class="background">
+      <div class="light"></div>
     </div>
-    <a
-      target="_blank"
-      href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai"
-      class="cta-button"
-    >
-      Get Started
-    </a>
-  </article>
+    <article class="price-card">
+      <header>
+        <h2 class="price-title text-gradient">Free</h2>
+        <p class="price-description text-gradient">
+          Everything you need to supercharge your productivity.
+        </p>
+        <span class="price-tag text-gradient">
+          <strong>$0</strong>/ month
+        </span>
+      </header>
+      <div class="divider"></div>
+      <div class="price-features">
+        <span>What is included</span>
+        <ul class="price-features">
+          <li>Create unlimited AI chat agents</li>
+          <li>Edit unlimited messages</li>
+          <li>Access to all future updates</li>
+        </ul>
+      </div>
+      <a
+        target="_blank"
+        href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai"
+        class="cta-button"
+      >
+        Get Started
+      </a>
+    </article>
+  </div>
 </section>
 
 <style>
@@ -56,6 +61,15 @@
     flex-direction: column;
     gap: var(--fluid-3);
     border: 1px solid 0.5px solid lab(23 0 0 / 0.67);
+
+    /* background:
+      linear-gradient(180deg, black, black) padding-box,
+      linear-gradient(180deg, oklch(0.63 0.1 215.22), oklch(0.43 0.14 285.15)) border-box; */
+
+    background:
+      radial-gradient(at center right, oklch(8% 0 0 / 1), oklch(16% 0 0 / 1)) padding-box,
+      linear-gradient(230deg, oklch(20% 0 0), oklch(25% 0 0)) border-box;
+    border: 1px solid transparent;
 
     h2 {
       text-align: left;
@@ -128,13 +142,24 @@
     padding: var(--fluid--1) var(--fluid-1);
     border: none;
     border-radius: var(--fluid--2);
-    background: linear-gradient(180deg, lab(35 -24.75 -21.51), lab(8 34.72 -48.03));
     color: var(--primary-text);
     cursor: pointer;
     transition: all 0.3s ease;
+
+    background:
+      linear-gradient(180deg, oklch(25% 0.03 240 / 1), oklch(10% 0 0 / 1)) padding-box,
+      linear-gradient(180deg, oklch(35% 0.03 240), oklch(15% 0.03 240)) border-box;
+    border: 1px solid transparent;
+  }
+
+  .card-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--fluid-2);
   }
 
   .background {
+    overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
@@ -142,7 +167,11 @@
     height: 100%;
 
     .light {
-      background-image: radial-gradient(40% 50% at 50% 50%,rgba(3,169,244,.27),hsla(0,0%,100%,0));
+      background-image:
+      radial-gradient(50% 50% at 100% 00%, oklch(0.7 0.16 239 / 0.47), oklch(1 0 0 / 0)),
+      radial-gradient(50% 50% at 0% 100%, oklch(0.5 0.16 239 / 0.57), oklch(1 0 0 / 0)),
+        radial-gradient(50% 50% at 0% 00%, oklch(0.3 0.16 239 / 0.67), oklch(1 0 0 / 0)),
+        radial-gradient(50% 50% at 100% 100%, oklch(0.3 0.16 239 / 0.37), oklch(1 0 0 / 0));
       position: absolute;
       top: 0;
       left: 0;
