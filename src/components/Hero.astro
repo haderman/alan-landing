@@ -4,6 +4,25 @@ import CTA from './common/CTA.astro';
 import ListOfFeatures from './common/ListOfFeatures.astro';
 import gitanaSrc from '../assets/screenshots/gitana.webp';
 import diagramSrc from '../assets/screenshots/vision-diagram.webp';
+
+const altTextGitana = `Screenshot of a chat interface with a dark theme, showing a conversation
+between the user and a contact named Gitana. The user is prompted to write a
+commit message, and Gitana lists the following commands to be executed: git diff,
+git diff --staged, and git diff --cached. There is a "Confirm" button below the commands,
+and at the bottom of the screen is an input field with the placeholder text "Ask me anything..."
+and a send button. The interface includes icons for adding attachments, a settings
+gear, and a dropdown menu labeled "Model gpt-4-turbo-preview.
+`;
+
+const altTextVisionDiagram = `Screenshot of a chat interface where a user has
+requested the creation of a diagram using MermaidJS. Below the request,
+there is an image of a finite state machine diagram with four
+states labeled S0, S1, S2, and S3. The diagram shows transitions
+between these states with conditions based on input (Din) and
+output (Dout) values. The background is dark with white and
+blue text, and the diagram is presented in a light-on-dark color scheme
+`;
+
 ---
 
 <section data-name="hero" class="hero">
@@ -16,10 +35,10 @@ import diagramSrc from '../assets/screenshots/vision-diagram.webp';
   </article>
   <div class="images-wrapper">
     <div>
-      <Image src={gitanaSrc} alt="Gitana" />
+      <Image src={gitanaSrc} alt={altTextGitana} />
     </div>
     <div>
-      <Image src={diagramSrc} alt="Vision Diagram" />
+      <Image src={diagramSrc} alt={altTextVisionDiagram} />
     </div>
   </div>
 </section>
