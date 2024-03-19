@@ -1,0 +1,77 @@
+---
+import { Icon } from 'astro-icon/components';
+import { ICON_NAMES } from '../constants/icon-names.js';
+
+const HIGHLIGHTS = [
+  {
+    icon: ICON_NAMES.openai,
+    text: 'Connect to ChatGPT using your OpenAI API key.',
+  },
+  {
+    icon: ICON_NAMES.private,
+    text: 'Your API Key is securely stored in your system keychain.',
+  },
+  {
+    icon: ICON_NAMES.secure,
+    text: 'All data is only stored locally. Just keep in mind, it\'s also sent to OpenAI.',
+  },
+];
+---
+
+<section data-name="highlights">
+  {HIGHLIGHTS.map(({ icon, text }) => (
+    <article data-name="highlight-card">
+      <Icon name={icon} />
+      <p>{text}</p>
+    </article>
+  ))}
+</section>
+
+<style>
+  section {
+    background-color: hsl(210, 0%, 0%, 0.1);
+    margin-top: -240px;
+    display: flex;
+    justify-content: center;
+    gap: var(--fluid-5);
+    align-items: stretch;
+
+    & > * {
+      flex: 1;
+      max-width: 300px;
+    }
+  }
+
+  article {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--fluid-2);
+    text-align: left;
+    border-radius: var(--fluid-2);
+    padding: var(--fluid-2);
+    background:
+      linear-gradient(to bottom, oklch(15% 0 0 / 1) 40%, oklch(10% 0 0 / 1) 70%, oklch(8% 0 0 / 1)) padding-box,
+      linear-gradient(180deg, oklch(20% 0 0) 40%, oklch(12% 0 0) 70%, oklch(8% 0 0)) border-box;
+    border: 1px solid transparent;
+  }
+
+  h2 {
+    font-size: var(--fluid-2);
+    margin-bottom: var(--fluid-2);
+    color: hsl(210, 50%, 50%);
+  }
+
+  p {
+    font-size: var(--fluid-1);
+    line-height: var(--fluid-2);
+    color: oklch(80% 0.01 210 / 1);
+  }
+
+  svg {
+    width: 48px;
+    height: 48px;
+    color: oklch(60% 0.05 237 / 1);
+  }
+</style>

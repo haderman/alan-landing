@@ -26,6 +26,7 @@
     "sharp": "^0.32.5"
   },
   "devDependencies": {
+    "@iconify-json/arcticons": "^1.1.98",
     "@iconify-json/line-md": "^1.1.36",
     "autoprefixer": "^10.4.15",
     "cssnano": "^6.0.1",

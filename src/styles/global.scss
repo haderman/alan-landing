@@ -126,6 +126,7 @@ h5,
 h6,
 figcaption {
   text-wrap: balance;
+  text-align: inherit;
 }
 
 li, p {
@@ -191,7 +192,6 @@ a {
 
 h2 {
   font-size: var(--fluid-3);
-  text-align: center;
 }
 
 summary {
