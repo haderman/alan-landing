@@ -128,6 +128,11 @@
   color: inherit;
 }
 
+*:focus {
+  outline: 2px solid oklch(70% 0 0 / 0.8);
+  outline-offset: 2px;
+}
+
 h1,
 h2,
 h3,
