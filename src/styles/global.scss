@@ -24,6 +24,8 @@
   --fluid-min-scale-6: var(--fluid-min-scale-5) * var(--fluid-min-ratio);
   --fluid-min-scale-7: var(--fluid-min-scale-6) * var(--fluid-min-ratio);
   --fluid-min-scale-8: var(--fluid-min-scale-7) * var(--fluid-min-ratio);
+  --fluid-min-scale-9: var(--fluid-min-scale-8) * var(--fluid-min-ratio);
+  --fluid-min-scale-10: var(--fluid-min-scale-9) * var(--fluid-min-ratio);
 
   --fluid-max-scale-0: var(--fluid-max-ratio);
   --fluid-max-scale-1: var(--fluid-max-scale-0) * var(--fluid-max-ratio);
@@ -34,6 +36,8 @@
   --fluid-max-scale-6: var(--fluid-max-scale-5) * var(--fluid-max-ratio);
   --fluid-max-scale-7: var(--fluid-max-scale-6) * var(--fluid-max-ratio);
   --fluid-max-scale-8: var(--fluid-max-scale-7) * var(--fluid-max-ratio);
+  --fluid-max-scale-9: var(--fluid-max-scale-8) * var(--fluid-max-ratio);
+  --fluid-max-scale-10: var(--fluid-max-scale-9) * var(--fluid-max-ratio);
 
   --fluid-min-size-0: (var(--fluid-min-size)) / 16;
   --fluid-min-size-1: (var(--fluid-min-size) * var(--fluid-min-scale-0)) / 16;
@@ -44,6 +48,8 @@
   --fluid-min-size-6: (var(--fluid-min-size) * var(--fluid-min-scale-5)) / 16;
   --fluid-min-size-7: (var(--fluid-min-size) * var(--fluid-min-scale-6)) / 16;
   --fluid-min-size-8: (var(--fluid-min-size) * var(--fluid-min-scale-7)) / 16;
+  --fluid-min-size-9: (var(--fluid-min-size) * var(--fluid-min-scale-8)) / 16;
+  --fluid-min-size-10: (var(--fluid-min-size) * var(--fluid-min-scale-9)) / 16;
 
   --fluid-max-size-0: (var(--fluid-max-size)) / 16;
   --fluid-max-size-1: (var(--fluid-max-size) * var(--fluid-max-scale-0)) / 16;
@@ -54,6 +60,8 @@
   --fluid-max-size-6: (var(--fluid-max-size) * var(--fluid-max-scale-5)) / 16;
   --fluid-max-size-7: (var(--fluid-max-size) * var(--fluid-max-scale-6)) / 16;
   --fluid-max-size-8: (var(--fluid-max-size) * var(--fluid-max-scale-7)) / 16;
+  --fluid-max-size-9: (var(--fluid-max-size) * var(--fluid-max-scale-8)) / 16;
+  --fluid-max-size-10: (var(--fluid-max-size) * var(--fluid-max-scale-9)) / 16;
 
   /**
    * The following ones are like the public custom properties and should be used in the code
@@ -71,6 +79,8 @@
   --fluid-6: calc(((var(--fluid-min-size-6) * 1rem) + (var(--fluid-max-size-6) - var(--fluid-min-size-6)) * var(--fluid-bp)));
   --fluid-7: calc(((var(--fluid-min-size-7) * 1rem) + (var(--fluid-max-size-7) - var(--fluid-min-size-7)) * var(--fluid-bp)));
   --fluid-8: calc(((var(--fluid-min-size-8) * 1rem) + (var(--fluid-max-size-8) - var(--fluid-min-size-8)) * var(--fluid-bp)));
+  --fluid-9: calc(((var(--fluid-min-size-9) * 1rem) + (var(--fluid-max-size-9) - var(--fluid-min-size-9)) * var(--fluid-bp)));
+  --fluid-10: calc(((var(--fluid-min-size-10) * 1rem) + (var(--fluid-max-size-10) - var(--fluid-min-size-10)) * var(--fluid-bp)));
 }
 
 
@@ -158,6 +168,7 @@ main {
 
 section {
   position: relative;
+  z-index: 0;
   padding: var(--fluid-6) var(--padding-left-right);
   gap: var(--fluid-8);
   display: flex;
@@ -197,6 +208,10 @@ h2 {
 summary {
   font-size: var(--fluid-1);
   font-weight: 500;
+}
+
+section.hero {
+  z-index: 1;
 }
 
 .visually-hidden {

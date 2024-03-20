@@ -30,15 +30,16 @@ const HIGHLIGHTS = [
 <style>
   section {
     background-color: hsl(210, 0%, 0%, 0.1);
-    margin-top: -240px;
+    margin-top: -180px;
     display: flex;
     justify-content: center;
     gap: var(--fluid-5);
+    flex-wrap: wrap;
     align-items: stretch;
 
     & > * {
-      flex: 1;
-      max-width: 300px;
+      flex-basis: 300px;
+      flex-shrink: 0;
     }
   }
 

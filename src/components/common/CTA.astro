@@ -8,54 +8,37 @@ import brandVscodeSVG from "../../assets/brand-vscode.svg?raw";
   class="cta-button"
 >
   <Fragment set:html={brandVscodeSVG} />
-  <span>Install</span>
+  <span>Download</span>
   <span class="objection"> - it's free</span>
 </a>
 
 <style lang="scss">
-  a {
-    cursor: pointer;
-    overflow: hidden;
-    position: relative;
-    padding: var(--fluid--1);
+  .cta-button {
     display: flex;
     align-items: center;
-    align-self: center;
     gap: var(--fluid--3);
-    border-radius: 1000px;
-
-    & > span {
-      z-index: 1;
-      border-radius: 1000px
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &:focus-visible {
-      outline: 1px solid lch(50 50 210 / 1);
-      outline-offset: 4px;
-    }
-  }
-
-  .cta-button {
+    align-self: center;
     text-align: center;
     font-size: var(--fluid-1);
-    padding: var(--fluid--1) var(--fluid-1);
+    padding: var(--fluid--3) var(--fluid--2);
     border-radius: var(--fluid--2);
     background: linear-gradient(180deg, lab(35 -24.75 -21.51), lab(8 34.72 -48.03));
     color: var(--primary-text);
     cursor: pointer;
     background:
       linear-gradient(180deg, oklch(0.43 0.1 215.22), oklch(0.23 0.14 285.15)) padding-box,
-      linear-gradient(180deg, oklch(0.63 0.1 215.22), oklch(0.43 0.14 285.15)) border-box;
+      linear-gradient(180deg, oklch(0.43 0.1 215.22), oklch(0.23 0.14 285.15)) border-box;
     border: 1px solid transparent;
+    transition: box-shadow 0.3s ease;
 
     &:hover {
       box-shadow: 0px 0px 8px 0px oklch(0.67 0.17 213.3);
+      text-decoration: none;
     }
-    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .objection {
