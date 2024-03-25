@@ -28,19 +28,26 @@ const titleWithoutLastWord = [...restOfTitle].reverse().join(" ") + " ";
     --link-visited-color: hsl(240.65 55.78% 60.88%);
     overflow: hidden;
     margin: var(--pad) 0;
-    border-radius: 0.5rem;
-    border: 1px solid var(--border-color);
+    // border-radius: 0.5rem;
+    // border: 1px solid var(--border-color);
+    background:
+      linear-gradient(to bottom, oklch(15% 0 0 / 1) 40%, oklch(8% 0 0 / 1) 80%, oklch(0 0 0)) padding-box,
+      linear-gradient(to bottom, oklch(22% 0 210), oklch(17% 0 250)) border-box;
+    border: 1px solid transparent;
+
     &[open] {
       summary {
-        border-bottom: 1px solid var(--border-color);
+        // border-bottom: 1px solid var(--border-color);
       }
       p {
-        background-color: var(--p-background-color);
+        // background-color: var(--p-background-color);
       }
     }
+
     &:first-child {
       margin-top: 0;
     }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -51,7 +58,8 @@ const titleWithoutLastWord = [...restOfTitle].reverse().join(" ") + " ";
     cursor: pointer;
     padding: var(--pad);
     outline: none;
-    background-color: var(--summary-color);
+    // background-color: var(--summary-color);
+
     &:focus {
       & > span {
         outline: 1px solid var(--marker-hover-color);
