@@ -5,7 +5,7 @@ export const nanoid = customAlphabet('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghi
 const isProd = import.meta.env.PROD;
 const isDev = import.meta.env.DEV;
 
-const ENDPONT = new URL('/api/log', document.location.href);
+const ENDPONT = new URL('/api/logs', document.location.href);
 
 function generateUniqueId() {
   return `usr_${nanoid(22)}`;
