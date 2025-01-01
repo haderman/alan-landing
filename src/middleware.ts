@@ -6,7 +6,13 @@ export const  onRequest = defineMiddleware((context, next) => {
   const url = new URL(request.url);
 
   if (url.pathname.startsWith("/analytics.js")) {
-    return rewrite(new URL("/analytics.js", 'https://analytics.ahrefs.com'));
+    const newUrl = new URL("/analytics.js", "https://analytics.ahrefs.com");
+    console.log("newUrl: ", newUrl);
+    return rewrite(newUrl, {
+      headers: {
+        "content-type": "application/javascript",
+      },
+    });
   }
 
   return next();
