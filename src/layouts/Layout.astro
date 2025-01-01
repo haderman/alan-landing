@@ -6,6 +6,8 @@ import SEO from "../components/common/SEO.astro";
 
 import "../styles/global.scss";
 
+const { AHREFS_ANALYTICS_LEY } = import.meta.env;
+
 interface Props {
   title: string;
 }
@@ -26,34 +28,45 @@ const { title } = Astro.props;
   </body>
 </html>
 
-<script>
-  import { logger } from '../lib/logger';
+<script
+  async
+  type="text/partytown"
+  src="https://analytics.ahrefs.com/analytics.js"
+  data-key={AHREFS_ANALYTICS_LEY}></script>
 
-  document.addEventListener('DOMContentLoaded', configLogger);
+<script>
+  import { logger } from "../lib/logger";
+
+  document.addEventListener("DOMContentLoaded", configLogger);
 
   function configLogger() {
     logger({
-      type: 'pageview',
-      href: 'home',
+      type: "pageview",
+      href: "home",
     });
 
-    document.body.addEventListener('click', (e) => {
-      const $target = (e.target as HTMLElement);
-      const $a = $target.closest('a');
-      const $summary = $target.closest('summary');
-      const parentSection = $target.closest?.('section');
-      const parentHeader = $target?.closest?.('header');
-      const parentFooter = $target?.closest?.('footer');
+    document.body.addEventListener("click", (e) => {
+      const $target = e.target as HTMLElement;
+      const $a = $target.closest("a");
+      const $summary = $target.closest("summary");
+      const parentSection = $target.closest?.("section");
+      const parentHeader = $target?.closest?.("header");
+      const parentFooter = $target?.closest?.("footer");
 
       logger({
-        type: 'click',
-        content: $a ? $a.getAttribute('href')
-          : $summary ? $summary.getAttribute('title')
-          : undefined,
-        section: parentSection ? parentSection.getAttribute('data-name')
-          : parentHeader ? 'header'
-          : parentFooter ? 'header'
-          : undefined
+        type: "click",
+        content: $a
+          ? $a.getAttribute("href")
+          : $summary
+            ? $summary.getAttribute("title")
+            : undefined,
+        section: parentSection
+          ? parentSection.getAttribute("data-name")
+          : parentHeader
+            ? "header"
+            : parentFooter
+              ? "header"
+              : undefined,
       });
     });
   }

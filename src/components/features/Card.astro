@@ -1,6 +1,6 @@
 ---
 import Squircle from "../common/Squircle.astro";
-import Background from "./Background.astro"
+import Background from "./Background.astro";
 
 const { title, description, color, icon } = Astro.props;
 ---
@@ -9,7 +9,7 @@ const { title, description, color, icon } = Astro.props;
   <!-- <Background seed={title} /> -->
   <article>
     <Squircle />
-    <picture set:html={icon}></picture>
+    <picture set:html={icon} />
     <h2>{title}</h2>
     <p>{description}</p>
   </article>

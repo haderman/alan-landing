@@ -1,30 +1,32 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { ICON_NAMES } from '../constants/icon-names.js';
+import { Icon } from "astro-icon/components";
+import { ICON_NAMES } from "../constants/icon-names.js";
 
 const HIGHLIGHTS = [
   {
     icon: ICON_NAMES.openai,
-    text: 'Connect to ChatGPT using your OpenAI API key.',
+    text: "Connect to ChatGPT using your OpenAI API key.",
   },
   {
     icon: ICON_NAMES.private,
-    text: 'Your API Key is securely stored in your system keychain.',
+    text: "Your API Key is securely stored in your system keychain.",
   },
   {
     icon: ICON_NAMES.secure,
-    text: 'All data is only stored locally. Just keep in mind, it\'s also sent to OpenAI.',
+    text: "All data is only stored locally. Just keep in mind, it's also sent to OpenAI.",
   },
 ];
 ---
 
 <section data-name="highlights">
-  {HIGHLIGHTS.map(({ icon, text }) => (
-    <article data-name="highlight-card">
-      <Icon name={icon} />
-      <p>{text}</p>
-    </article>
-  ))}
+  {
+    HIGHLIGHTS.map(({ icon, text }) => (
+      <article data-name="highlight-card">
+        <Icon name={icon} />
+        <p>{text}</p>
+      </article>
+    ))
+  }
 </section>
 
 <style>
@@ -53,8 +55,20 @@ const HIGHLIGHTS = [
     border-radius: var(--fluid-2);
     padding: var(--fluid-2);
     background:
-      linear-gradient(to bottom, oklch(15% 0 0 / 1) 40%, oklch(10% 0 0 / 1) 70%, oklch(8% 0 0 / 1)) padding-box,
-      linear-gradient(180deg, oklch(20% 0 0) 40%, oklch(12% 0 0) 70%, oklch(8% 0 0)) border-box;
+      linear-gradient(
+          to bottom,
+          oklch(15% 0 0 / 1) 40%,
+          oklch(10% 0 0 / 1) 70%,
+          oklch(8% 0 0 / 1)
+        )
+        padding-box,
+      linear-gradient(
+          180deg,
+          oklch(20% 0 0) 40%,
+          oklch(12% 0 0) 70%,
+          oklch(8% 0 0)
+        )
+        border-box;
     border: 1px solid transparent;
   }
 

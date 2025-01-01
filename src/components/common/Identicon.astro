@@ -1,6 +1,6 @@
 ---
-import { createAvatar as dicebearCreateAvatar } from '@dicebear/core';
-import * as identicon from '@dicebear/identicon';
+import { createAvatar as dicebearCreateAvatar } from "@dicebear/core";
+import * as identicon from "@dicebear/identicon";
 
 const { seed } = Astro.props;
 
@@ -16,4 +16,5 @@ function createIdenticon(seed) {
 
 const svg = createIdenticon(seed);
 ---
-<span set:html={svg} class="identicon"></span>
+
+<span set:html={svg} class="identicon" />

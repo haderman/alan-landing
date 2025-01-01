@@ -1,19 +1,27 @@
-import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+import { defineConfig } from "astro/config";
+import vercel from "@astrojs/vercel/serverless";
+import partytown from "@astrojs/partytown";
 
-import icon from 'astro-icon';
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: "server",
   adapter: vercel({
     webAnalytics: {
-      enabled: true
+      enabled: true,
     },
     imageService: {
-      enabled: true
+      enabled: true,
     },
   }),
-  site: 'https://www.alanai.app/',
-  integrations: [icon()]
+  site: "https://www.alanai.app/",
+  integrations: [
+    icon(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
 });

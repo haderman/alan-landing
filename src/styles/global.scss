@@ -13,7 +13,10 @@
   --fluid-max-ratio: 1.25;
 
   --fluid-screen: 100vw;
-  --fluid-bp: calc((var(--fluid-screen) - ((var(--fluid-min-width) / 16) * 1rem)) / ((var(--fluid-max-width) / 16) - (var(--fluid-min-width) / 16)));
+  --fluid-bp: calc(
+    (var(--fluid-screen) - ((var(--fluid-min-width) / 16) * 1rem)) /
+      ((var(--fluid-max-width) / 16) - (var(--fluid-min-width) / 16))
+  );
 
   --fluid-min-scale-0: var(--fluid-min-ratio);
   --fluid-min-scale-1: var(--fluid-min-scale-0) * var(--fluid-min-ratio);
@@ -70,19 +73,73 @@
   --fluid--3: calc(var(--fluid-0) * 0.4);
   --fluid--2: calc(var(--fluid-0) * 0.6);
   --fluid--1: calc(var(--fluid-0) * 0.8);
-  --fluid-0: calc(((var(--fluid-min-size-0) * 1rem) + (var(--fluid-max-size-0) - var(--fluid-min-size-0)) * var(--fluid-bp)));
-  --fluid-1: calc(((var(--fluid-min-size-1) * 1rem) + (var(--fluid-max-size-1) - var(--fluid-min-size-1)) * var(--fluid-bp)));
-  --fluid-2: calc(((var(--fluid-min-size-2) * 1rem) + (var(--fluid-max-size-2) - var(--fluid-min-size-2)) * var(--fluid-bp)));
-  --fluid-3: calc(((var(--fluid-min-size-3) * 1rem) + (var(--fluid-max-size-3) - var(--fluid-min-size-3)) * var(--fluid-bp)));
-  --fluid-4: calc(((var(--fluid-min-size-4) * 1rem) + (var(--fluid-max-size-4) - var(--fluid-min-size-4)) * var(--fluid-bp)));
-  --fluid-5: calc(((var(--fluid-min-size-5) * 1rem) + (var(--fluid-max-size-5) - var(--fluid-min-size-5)) * var(--fluid-bp)));
-  --fluid-6: calc(((var(--fluid-min-size-6) * 1rem) + (var(--fluid-max-size-6) - var(--fluid-min-size-6)) * var(--fluid-bp)));
-  --fluid-7: calc(((var(--fluid-min-size-7) * 1rem) + (var(--fluid-max-size-7) - var(--fluid-min-size-7)) * var(--fluid-bp)));
-  --fluid-8: calc(((var(--fluid-min-size-8) * 1rem) + (var(--fluid-max-size-8) - var(--fluid-min-size-8)) * var(--fluid-bp)));
-  --fluid-9: calc(((var(--fluid-min-size-9) * 1rem) + (var(--fluid-max-size-9) - var(--fluid-min-size-9)) * var(--fluid-bp)));
-  --fluid-10: calc(((var(--fluid-min-size-10) * 1rem) + (var(--fluid-max-size-10) - var(--fluid-min-size-10)) * var(--fluid-bp)));
+  --fluid-0: calc(
+    (
+      (var(--fluid-min-size-0) * 1rem) +
+        (var(--fluid-max-size-0) - var(--fluid-min-size-0)) * var(--fluid-bp)
+    )
+  );
+  --fluid-1: calc(
+    (
+      (var(--fluid-min-size-1) * 1rem) +
+        (var(--fluid-max-size-1) - var(--fluid-min-size-1)) * var(--fluid-bp)
+    )
+  );
+  --fluid-2: calc(
+    (
+      (var(--fluid-min-size-2) * 1rem) +
+        (var(--fluid-max-size-2) - var(--fluid-min-size-2)) * var(--fluid-bp)
+    )
+  );
+  --fluid-3: calc(
+    (
+      (var(--fluid-min-size-3) * 1rem) +
+        (var(--fluid-max-size-3) - var(--fluid-min-size-3)) * var(--fluid-bp)
+    )
+  );
+  --fluid-4: calc(
+    (
+      (var(--fluid-min-size-4) * 1rem) +
+        (var(--fluid-max-size-4) - var(--fluid-min-size-4)) * var(--fluid-bp)
+    )
+  );
+  --fluid-5: calc(
+    (
+      (var(--fluid-min-size-5) * 1rem) +
+        (var(--fluid-max-size-5) - var(--fluid-min-size-5)) * var(--fluid-bp)
+    )
+  );
+  --fluid-6: calc(
+    (
+      (var(--fluid-min-size-6) * 1rem) +
+        (var(--fluid-max-size-6) - var(--fluid-min-size-6)) * var(--fluid-bp)
+    )
+  );
+  --fluid-7: calc(
+    (
+      (var(--fluid-min-size-7) * 1rem) +
+        (var(--fluid-max-size-7) - var(--fluid-min-size-7)) * var(--fluid-bp)
+    )
+  );
+  --fluid-8: calc(
+    (
+      (var(--fluid-min-size-8) * 1rem) +
+        (var(--fluid-max-size-8) - var(--fluid-min-size-8)) * var(--fluid-bp)
+    )
+  );
+  --fluid-9: calc(
+    (
+      (var(--fluid-min-size-9) * 1rem) +
+        (var(--fluid-max-size-9) - var(--fluid-min-size-9)) * var(--fluid-bp)
+    )
+  );
+  --fluid-10: calc(
+    (
+      (var(--fluid-min-size-10) * 1rem) +
+        (var(--fluid-max-size-10) - var(--fluid-min-size-10)) * var(--fluid-bp)
+    )
+  );
 }
-
 
 @media screen and (min-width: 1500px) {
   :root {
@@ -144,14 +201,15 @@ figcaption {
   text-align: inherit;
 }
 
-li, p {
+li,
+p {
   text-wrap: pretty;
   font-size: inherit;
 }
 
 html {
   // font-family: "Montserrat Variable", system-ui, sans-serif;
-  font-family: -apple-system,"system-ui","Segoe UI",sans-serif;
+  font-family: -apple-system, "system-ui", "Segoe UI", sans-serif;
   background: black;
   height: 100%;
 }
@@ -234,14 +292,22 @@ section.hero {
 }
 
 .text-gradient {
-  background: linear-gradient(308deg,hsl(201 14% 59% / 1) 20%,hsl(189 58% 100% / 1));
+  background: linear-gradient(
+    308deg,
+    hsl(201 14% 59% / 1) 20%,
+    hsl(189 58% 100% / 1)
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
   box-decoration-break: clone;
 }
 
 .text-gradient-2 {
-  background: linear-gradient(264deg,hsl(207, 90%, 54%) 20%,hsl(262, 52%, 47%));
+  background: linear-gradient(
+    264deg,
+    hsl(207, 90%, 54%) 20%,
+    hsl(262, 52%, 47%)
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
   box-decoration-break: clone;

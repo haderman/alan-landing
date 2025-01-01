@@ -28,7 +28,7 @@ class InsetBorder {
       inset + borderWidth,
       geom.width - 2 * (inset + borderWidth),
       geom.height - 2 * (inset + borderWidth),
-      innerBorderRadius
+      innerBorderRadius,
     );
 
     ctx.stroke(); // Stroke the inset border

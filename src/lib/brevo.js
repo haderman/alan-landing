@@ -1,29 +1,30 @@
-const URL = 'https://api.brevo.com/v3/smtp/email';
+const URL = "https://api.brevo.com/v3/smtp/email";
 const API_KEY = import.meta.env.BREVO_API_KEY;
 
 export function sendWelcomeMessage(email, unsubscribeUrl) {
   const data = {
     sender: {
-      name: 'Alan AI Chat updates',
-      email: 'hello@alanai.app',
+      name: "Alan AI Chat updates",
+      email: "hello@alanai.app",
     },
     to: [{ email }],
-    subject: 'Welcome Aboard! You\'re on the List for the Exclusive Release of Alan AI Chat v2 🚀',
+    subject:
+      "Welcome Aboard! You're on the List for the Exclusive Release of Alan AI Chat v2 🚀",
     htmlContent: emailTemplate(unsubscribeUrl),
   };
   return fetch(URL, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-type': 'application/json',
-      'accept': 'application/json',
-      'api-key': API_KEY
+      "Content-type": "application/json",
+      accept: "application/json",
+      "api-key": API_KEY,
     },
     body: JSON.stringify(data),
-  })
+  });
 }
 
 function emailTemplate(unsubscribeUrl) {
-  console.log('--> unsubscribeUrl: ', unsubscribeUrl);
+  console.log("--> unsubscribeUrl: ", unsubscribeUrl);
 
   return `<!DOCTYPE html>
   <html lang="en">

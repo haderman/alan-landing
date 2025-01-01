@@ -20,7 +20,7 @@ const titleWithoutLastWord = [...restOfTitle].reverse().join(" ") + " ";
   details {
     --pad: var(--fluid-0);
     --border-color: hsl(210 18% 35% / 0.6);
-    --summary-color: rgba(0, 0, 0, .3);
+    --summary-color: rgba(0, 0, 0, 0.3);
     --marker-color: hsl(210 18% 35% / 1);
     --marker-hover-color: hsl(210 78% 55% / 1);
     --p-background-color: hsl(210 88% 5% / 0.4);
@@ -31,7 +31,13 @@ const titleWithoutLastWord = [...restOfTitle].reverse().join(" ") + " ";
     // border-radius: 0.5rem;
     // border: 1px solid var(--border-color);
     background:
-      linear-gradient(to bottom, oklch(15% 0 0 / 1) 40%, oklch(8% 0 0 / 1) 80%, oklch(0 0 0)) padding-box,
+      linear-gradient(
+          to bottom,
+          oklch(15% 0 0 / 1) 40%,
+          oklch(8% 0 0 / 1) 80%,
+          oklch(0 0 0)
+        )
+        padding-box,
       linear-gradient(to bottom, oklch(22% 0 210), oklch(17% 0 250)) border-box;
     border: 1px solid transparent;
 
@@ -97,4 +103,3 @@ const titleWithoutLastWord = [...restOfTitle].reverse().join(" ") + " ";
     }
   }
 </style>
-

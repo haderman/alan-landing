@@ -1,6 +1,7 @@
 ---
 
 ---
+
 <div class="squircle">
   <div class="container-glass">
     <div class="glass"></div>
@@ -87,7 +88,7 @@
   }
 </style>
 
-<script async>;
+<script async>
   loadPaintWorklet()
     .then(updateSquircleStatus)
     .catch((err) => {
@@ -104,7 +105,8 @@
      * So we are using the data URI method to load the paint worklet while I found a better
      * solution.
      */
-    return CSS.paintWorklet.addModule(`data:application/javascript;charset=utf8,${encodeURIComponent(`
+    return CSS.paintWorklet.addModule(
+      `data:application/javascript;charset=utf8,${encodeURIComponent(`
       class InsetBorder {
         static get inputProperties() {
           return ["--border-radius", "--border-width", "--border-color", "--inset"];
@@ -157,7 +159,8 @@
       if (typeof registerPaint !== "undefined") {
         registerPaint("inset-border", InsetBorder);
       }
-    `)}`);
+    `)}`,
+    );
   }
 
   function updateSquircleStatus() {

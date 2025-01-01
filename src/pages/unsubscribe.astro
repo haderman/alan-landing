@@ -1,45 +1,42 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Unsubscribe from Alan Chat.">
   <main>
     <section>
       <article>
-        <h1>
-          Unsubscribe from Alan Chat
-        </h1>
+        <h1>Unsubscribe from Alan Chat</h1>
         <p>
-          We're sorry to see you go! Enter your email to unsubscribe, or follow us on social media.
+          We're sorry to see you go! Enter your email to unsubscribe, or follow
+          us on social media.
         </p>
         <form action="/api/unsubscribe" method="post">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required />
-          <button type="submit">
-            Unsubscribe
-          </button>
+          <button type="submit"> Unsubscribe </button>
         </form>
         <div class="social-links">
           <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
           <a href="https://facebook.com/yourpage" target="_blank">Facebook</a>
-          <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+          <a href="https://instagram.com/yourhandle" target="_blank"
+            >Instagram</a
+          >
           <!-- Add more social links as needed -->
         </div>
       </article>
     </section>
   </main>
-  <footer>
-    With love
-  </footer>
+  <footer>With love</footer>
 </Layout>
 
 <script>
   // This script runs on the client side
-  window.addEventListener('DOMContentLoaded', (event) => {
+  window.addEventListener("DOMContentLoaded", (event) => {
     const urlParams = new URLSearchParams(window.location.search);
-    const email = urlParams.get('email');
+    const email = urlParams.get("email");
     if (email) {
-      const $email = document.getElementById('email');
+      const $email = document.getElementById("email");
       if ($email instanceof HTMLInputElement) {
         $email.value = decodeURIComponent(email);
       }

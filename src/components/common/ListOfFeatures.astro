@@ -1,41 +1,42 @@
 ---
-import circleCheckSvg from '../../assets/icons/circle-check.svg?raw';
-import { Icon } from 'astro-icon/components';
-import { ICON_NAMES } from '../../constants/icon-names.js';
+import circleCheckSvg from "../../assets/icons/circle-check.svg?raw";
+import { Icon } from "astro-icon/components";
+import { ICON_NAMES } from "../../constants/icon-names.js";
 
 const FEATURES = [
   {
     icon: ICON_NAMES.chat,
-    text: 'Customize each agent with instructions and temperature.',
+    text: "Customize each agent with instructions and temperature.",
   },
   {
     icon: ICON_NAMES.chat,
-    text: 'Edit or Retry messages to save time and avoid rework.',
+    text: "Edit or Retry messages to save time and avoid rework.",
   },
   {
     icon: ICON_NAMES.chat,
-    text: 'Reference any file in the conversation or in the agent instructions.',
+    text: "Reference any file in the conversation or in the agent instructions.",
   },
   {
     icon: ICON_NAMES.chat,
-    text: 'Upload multiple images at once to ask questions.',
+    text: "Upload multiple images at once to ask questions.",
   },
   {
     icon: ICON_NAMES.chat,
-    text: 'Ask questions, run commands, and get answers in the same chat.',
+    text: "Ask questions, run commands, and get answers in the same chat.",
   },
 ];
-
 ---
 
 <div>
   <ul>
-    {FEATURES.map(({ icon, text }) => (
-      <li>
-        <Fragment set:html={circleCheckSvg} />
-        <span>{text}</span>
-      </li>
-    ))}
+    {
+      FEATURES.map(({ icon, text }) => (
+        <li>
+          <Fragment set:html={circleCheckSvg} />
+          <span>{text}</span>
+        </li>
+      ))
+    }
   </ul>
 </div>
 
