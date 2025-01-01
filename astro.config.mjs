@@ -14,6 +14,7 @@ export default defineConfig({
     imageService: {
       enabled: true,
     },
+    edgeMiddleware: true,
   }),
   site: "https://www.alanai.app/",
   integrations: [
