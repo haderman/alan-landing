@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.1.2",
     "@astrojs/vercel": "^8.0.1",
     "@dicebear/core": "^6.0.4",
     "@dicebear/identicon": "^6.0.4",
