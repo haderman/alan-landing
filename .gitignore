@@ -1,23 +1,26 @@
-# build output
-dist/
+# Ignore everything by default
+/*
 
-# generated types
-.astro/
+# Whitelist files and directories that should be tracked                   # deny everything by default
+!.gitignore
+!.github/               # CI/workflows
+!.alan/                 # project agent/metadata
+!README.md
+!LICENSE
+!package.json
+!package-lock.json
+!pnpm-lock.yaml
+!yarn.lock
 
-# dependencies
-node_modules/
+!src/                   # source
+!src/**
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+!public/                # static assets
+!public/**
 
-# environment variables
-.env
-.env.production
+!astro.config.mjs
+!astro.config.*
+!tsconfig.json
+!vite.config.*
+!package.json
 
-# macOS-specific files
-.DS_Store
-
-.vercel
