@@ -3,20 +3,16 @@
 
 # Whitelist files and directories that should be tracked                   # deny everything by default
 !.gitignore
-!.github/               # CI/workflows
-!.alan/                 # project agent/metadata
+!.github               # CI/workflows
 !README.md
 !LICENSE
 !package.json
 !package-lock.json
 !pnpm-lock.yaml
-!yarn.lock
 
-!src/                   # source
-!src/**
-
-!public/                # static assets
-!public/**
+!src
+!styles
+!public                # static assets
 
 !astro.config.mjs
 !astro.config.*
