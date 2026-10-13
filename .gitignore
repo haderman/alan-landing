@@ -12,7 +12,8 @@
 
 !src
 !styles
-!public                # static assets
+!public/
+!public/**
 
 !astro.config.mjs
 !astro.config.*

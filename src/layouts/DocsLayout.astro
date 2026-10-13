@@ -1,0 +1,548 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import logoSrc from "../assets/alan-with-background.png";
+
+type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
+interface Props {
+  title: string;
+  description: string;
+  doc?: CollectionEntry<"docs">;
+  headings?: Heading[];
+}
+
+const { title, description, doc, headings = [] } = Astro.props;
+const docs = (await getCollection("docs"))
+  .filter(({ data }) => !data.draft)
+  .sort(
+    (a, b) => a.data.order - b.data.order || a.id.localeCompare(b.id),
+  );
+
+const groups = new Map<string, typeof docs>();
+for (const item of docs) {
+  const items = groups.get(item.data.group) ?? [];
+  items.push(item);
+  groups.set(item.data.group, items);
+}
+
+const currentIndex = doc ? docs.findIndex((item) => item.id === doc.id) : -1;
+const previous = currentIndex > 0 ? docs[currentIndex - 1] : undefined;
+const next =
+  currentIndex >= 0 && currentIndex < docs.length - 1
+    ? docs[currentIndex + 1]
+    : undefined;
+const tocHeadings = headings.filter((heading) => heading.depth === 2);
+const docHref = (item: (typeof docs)[number]) => `/docs/${item.id}/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="text/markdown"
+      href={doc ? `/docs/${doc.id}.md` : "/docs/index.md"}
+    />
+    <link rel="describedby" href="/docs/llms.txt" />
+    <title>{title} | Alan AI Docs</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Alan AI home">
+          <Image src={logoSrc} alt="" />
+          <span>Alan AI</span>
+        </a>
+        <nav aria-label="Site navigation">
+          <a href="/docs/">Documentation</a>
+          <a
+            href="https://marketplace.visualstudio.com/items?itemName=haderman.alanai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Get Alan</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="docs-layout">
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <a class="sidebar-home" href="/docs/">Alan AI Documentation</a>
+          <nav aria-label="Documentation">
+            {
+              Array.from(groups.entries()).map(([group, items]) => (
+                <section class="sidebar-group">
+                  <h2>{group}</h2>
+                  <ul>
+                    {
+                      items.map((item) => (
+                        <li>
+                          <a
+                            href={docHref(item)}
+                            aria-current={
+                              item.id === doc?.id ? "page" : undefined
+                            }
+                          >
+                            {item.data.title}
+                          </a>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </section>
+              ))
+            }
+          </nav>
+        </div>
+      </aside>
+
+      <main class="docs-main">
+        <article>
+          {doc && <p class="eyebrow">{doc.data.group}</p>}
+          <h1>{title}</h1>
+          <p class="lead">{description}</p>
+          <div class="markdown-content">
+            <slot />
+          </div>
+
+          {
+            doc && (previous || next) && (
+              <nav class="page-links" aria-label="Documentation pages">
+                <div>
+                  {previous && (
+                    <a href={docHref(previous)}>
+                      <span>Previous</span>
+                      {previous.data.title}
+                    </a>
+                  )}
+                </div>
+                <div>
+                  {next && (
+                    <a href={docHref(next)}>
+                      <span>Next</span>
+                      {next.data.title}
+                    </a>
+                  )}
+                </div>
+              </nav>
+            )
+          }
+        </article>
+      </main>
+
+      {
+        tocHeadings.length > 0 && (
+          <aside class="toc">
+            <p>On this page</p>
+            <nav aria-label="On this page">
+              <ul>
+                {
+                  tocHeadings.map((heading) => (
+                    <li>
+                      <a href={`#${heading.slug}`}>{heading.text}</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+          </aside>
+        )
+      }
+    </div>
+
+    <footer>
+      <span>Alan AI</span>
+      <a href="/">Back to alanai.app</a>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background: #071018;
+  }
+
+  body {
+    min-width: 320px;
+    margin: 0;
+    background:
+      radial-gradient(circle at 80% 0%, rgb(20 71 105 / 0.22), transparent 34rem),
+      #071018;
+    color: #d6e2ea;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
+
+  a {
+    color: #8bc8f0;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .site-header {
+    border-bottom: 1px solid rgb(139 200 240 / 0.14);
+    background: rgb(7 16 24 / 0.85);
+  }
+
+  .header-inner,
+  .docs-layout,
+  footer {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 4.5rem;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #f0f7fb;
+    font-weight: 600;
+  }
+
+  .brand:hover {
+    text-decoration: none;
+  }
+
+  .brand img {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .site-header nav {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .docs-layout {
+    display: grid;
+    grid-template-columns: 15rem minmax(0, 1fr) 12rem;
+    align-items: start;
+    gap: 2.5rem;
+    padding: 2.5rem 0 5rem;
+  }
+
+  .sidebar {
+    border-right: 1px solid rgb(139 200 240 / 0.14);
+  }
+
+  .sidebar-inner {
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    padding-right: 1.5rem;
+    overflow-y: auto;
+  }
+
+  .sidebar-home {
+    display: block;
+    margin-bottom: 2rem;
+    color: #f0f7fb;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .sidebar-home:hover {
+    text-decoration: none;
+  }
+
+  .sidebar-group {
+    margin-bottom: 1.75rem;
+  }
+
+  .sidebar-group h2,
+  .toc > p {
+    margin: 0 0 0.55rem;
+    color: #8c9eaa;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sidebar ul,
+  .toc ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sidebar li {
+    margin: 0.2rem 0;
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 0.3rem 0.55rem;
+    border-radius: 0.35rem;
+    color: #aec1cc;
+    font-size: 0.9rem;
+  }
+
+  .sidebar a:hover,
+  .sidebar a[aria-current="page"] {
+    background: rgb(139 200 240 / 0.1);
+    color: #f0f7fb;
+    text-decoration: none;
+  }
+
+  .docs-main {
+    min-width: 0;
+  }
+
+  article {
+    min-width: 0;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.5rem;
+    color: #8bc8f0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    color: #f0f7fb;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  .lead {
+    max-width: 48rem;
+    margin: 1rem 0 2.5rem;
+    color: #9eb1bd;
+    font-size: 1.12rem;
+  }
+
+  .markdown-content {
+    max-width: 48rem;
+  }
+
+  .markdown-content h2 {
+    margin: 2.75rem 0 0.85rem;
+    color: #f0f7fb;
+    font-size: 1.65rem;
+    line-height: 1.25;
+  }
+
+  .markdown-content h3 {
+    margin: 2rem 0 0.65rem;
+    color: #e6f0f5;
+    font-size: 1.2rem;
+  }
+
+  .markdown-content p,
+  .markdown-content ul,
+  .markdown-content ol,
+  .markdown-content blockquote {
+    margin: 0 0 1.15rem;
+  }
+
+  .markdown-content ul,
+  .markdown-content ol {
+    padding-left: 1.4rem;
+  }
+
+  .markdown-content li + li {
+    margin-top: 0.45rem;
+  }
+
+  .markdown-content strong {
+    color: #f0f7fb;
+  }
+
+  .markdown-content code {
+    padding: 0.12rem 0.35rem;
+    border-radius: 0.25rem;
+    background: rgb(139 200 240 / 0.1);
+    color: #b9e1f7;
+    font-size: 0.9em;
+  }
+
+  .markdown-content pre {
+    max-width: 100%;
+    margin: 1.4rem 0;
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid rgb(139 200 240 / 0.14);
+    border-radius: 0.55rem;
+    background: #0b1721;
+  }
+
+  .markdown-content pre code {
+    padding: 0;
+    background: transparent;
+    color: #d6e2ea;
+    font-size: 0.9rem;
+  }
+
+  .markdown-content blockquote {
+    padding: 0.15rem 1rem;
+    border-left: 3px solid #559ac5;
+    color: #aebfc9;
+  }
+
+  .markdown-content hr {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid rgb(139 200 240 / 0.14);
+  }
+
+  .page-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgb(139 200 240 / 0.14);
+  }
+
+  .page-links > div:last-child {
+    text-align: right;
+  }
+
+  .page-links a {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    color: #b9e1f7;
+  }
+
+  .page-links span {
+    color: #8c9eaa;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .toc {
+    position: sticky;
+    top: 1.5rem;
+    min-width: 0;
+  }
+
+  .toc a {
+    display: block;
+    padding: 0.25rem 0;
+    color: #8c9eaa;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .toc a:hover {
+    color: #d6e2ea;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0 2.5rem;
+    border-top: 1px solid rgb(139 200 240 / 0.14);
+    color: #8c9eaa;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 1050px) {
+    .docs-layout {
+      grid-template-columns: 15rem minmax(0, 1fr);
+    }
+
+    .toc {
+      display: none;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .header-inner,
+    .docs-layout,
+    footer {
+      width: min(100% - 1.5rem, 48rem);
+    }
+
+    .header-inner {
+      min-height: 4rem;
+    }
+
+    .site-header nav {
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .docs-layout {
+      display: block;
+      padding-top: 1.5rem;
+    }
+
+    .sidebar {
+      margin-bottom: 2.5rem;
+      border-right: 0;
+      border-bottom: 1px solid rgb(139 200 240 / 0.14);
+    }
+
+    .sidebar-inner {
+      position: static;
+      max-height: none;
+      padding: 0 0 1.25rem;
+    }
+
+    .sidebar-home {
+      margin-bottom: 1rem;
+    }
+
+    .sidebar nav {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.25rem 1rem;
+    }
+
+    .sidebar-group {
+      margin-bottom: 0.75rem;
+    }
+
+    .sidebar-group h2 {
+      margin-top: 0.5rem;
+    }
+
+    .page-links {
+      grid-template-columns: 1fr;
+    }
+
+    .page-links > div:last-child {
+      text-align: left;
+    }
+
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
