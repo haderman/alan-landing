@@ -1,0 +1,16 @@
+# Alan AI
+
+> Alan AI is a free Visual Studio Code extension that provides multiple AI chat agents inside the IDE. It uses your own OpenAI API key, stores application data locally, and sends prompts and content to OpenAI.
+
+Alan AI is currently available for Visual Studio Code. Users can create multiple chat agents with custom system prompts and use them without leaving the editor.
+
+## Documentation
+
+- [Documentation index](https://www.alanai.app/docs/index.md): Overview of the available Alan AI guides.
+- [Getting started](https://www.alanai.app/docs/getting-started.md): Install Alan AI, open the panel, add an OpenAI API key, and start a conversation.
+
+## Product
+
+- [Alan AI homepage](https://www.alanai.app/index.md): Product overview, features, pricing, and frequently asked questions.
+- [Alan AI on the Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=haderman.alanai): Install the extension.
+- [Alan AI changelog](https://marketplace.visualstudio.com/items/haderman.alanai/changelog): Review extension updates.
