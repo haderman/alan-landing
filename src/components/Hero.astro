@@ -34,7 +34,12 @@ blue text, and the diagram is presented in a light-on-dark color scheme
   </article>
   <div class="images-wrapper">
     <div>
-      <Image src={gitanaSrc} alt={altTextGitana} />
+      <Image
+        src={gitanaSrc}
+        alt={altTextGitana}
+        loading="eager"
+        fetchpriority="high"
+      />
     </div>
     <div>
       <Image src={diagramSrc} alt={altTextVisionDiagram} />
@@ -76,15 +81,11 @@ blue text, and the diagram is presented in a light-on-dark color scheme
   }
 
   .hero > article {
-    opacity: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--fluid-4);
-    animation-duration: 3s;
-    animation-name: fadeIn;
-    animation-fill-mode: forwards;
 
     & > h1 {
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -105,20 +106,6 @@ blue text, and the diagram is presented in a light-on-dark color scheme
       li:nth-last-child(-n + 2) {
         display: block;
       }
-    }
-  }
-
-  .hero > div {
-    opacity: 0;
-    animation-duration: 1s;
-    animation-name: fadeInUp;
-    animation-delay: 500ms;
-    animation-fill-mode: forwards;
-
-    @media screen and (min-width: 1236px) {
-      animation-name: fadeIn;
-      animation-duration: 3s;
-      animation-delay: 0ms;
     }
   }
 
